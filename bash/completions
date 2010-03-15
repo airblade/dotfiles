@@ -1,0 +1,15 @@
+# SSH completion.
+# http://drawohara.tumblr.com/post/6584031
+SSH_COMPLETE=( $(cat ~/.ssh/known_hosts | \
+cut -f 1 -d ' ' | \
+sed -e s/,.*//g | \
+uniq | \
+egrep -v [0123456789]) )
+complete -o default -W "${SSH_COMPLETE[*]}" ssh
+
+# Rake and Capistrano completion.
+complete -C ~/dotfiles/bash/completion_scripts/complete_rake -o default rake
+complete -C ~/dotfiles/bash/completion_scripts/complete_cap -o default cap
+
+# Git completion.
+source ~/dotfiles/bash/completion_scripts/git-completion.bash

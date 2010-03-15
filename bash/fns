@@ -1,0 +1,47 @@
+# List 10 most recently modified items in directory.
+function lh {
+  ls -lt "$@" | head -10;
+}
+
+# Grep directory listing.
+function lg {
+  ls -la | grep -e "$@";
+}
+
+# cd to first matching gem directory.
+function cdgem {
+  cd /usr/local/lib/ruby/gems/1.8/gems/; cd `ls | grep $1 | sort | tail -1`
+}
+
+# Create a new Rails app from a template..
+function railsapp {
+  template=$1
+  appname=$2
+  shift 2
+  rails $appname -m http://github.com/airblade/rails-templates/raw/master/$template.rb $@
+}
+
+# ghc (GitHub clone)
+# http://openmonkey.com/articles/2009/07/fast-github-clone-bash-function
+function ghc {
+  gh_url=${1:-`pbpaste`}
+  co_dir=${HOME}/code/src/$(echo $gh_url | sed -e 's/^git:\/\/github.com\///; s/\//-/; s/\.git$//')
+
+  if [ -d $co_dir ]; then
+    cd $co_dir && git pull origin master
+  else
+    git clone "${gh_url}" "${co_dir}" && cd "${co_dir}"
+  fi
+}
+
+# Commit pending changes quoting args as message.
+# e.g.: gg Fix ICBM launch bug.
+function gg {
+  git commit -am "$*"
+}
+
+# http://gist.github.com/23914
+# Quickly inspect syntax-highlighted source files.
+function pless {
+  pygmentize $1 | less -r
+}

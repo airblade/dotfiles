@@ -1,0 +1,35 @@
+# Meta
+alias ea='vim ~/dotfiles/bash/aliases'
+
+# The one true text editor
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+# Git
+alias gs='git status'
+alias gd='git diff'
+
+# Rails
+alias sc='script/console'
+alias sg='script/generate'
+alias sgm='script/generate migration'
+alias sp='script/plugin install'
+alias ms='mongrel_rails start'
+alias dbm='rake db:migrate'
+
+# Passenger
+alias rst='touch tmp/restart'
+
+# Directories
+alias less='less -r'
+alias ls='ls -G'  # colourful
+
+# Changing directory
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# Processes
+alias pg="ps wwaux | grep -v 'grep' | grep -i"
+alias topm='top -o vsize' # memory
+alias topc='top -o cpu'   # cpu

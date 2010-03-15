@@ -1,0 +1,20 @@
+# Prompt.  Looks like:
+#
+#   /path/to/current/directory/
+#   $ 
+#
+# If we are in a Git repo the current branch is shown like this:
+#
+#   /path/to/current/directory/  (branch_name)
+#   $ 
+#
+# __git_ps1 is set up by the git-completion.bash script bundled
+# with the Git source.
+#
+# Full list of colour codes here:
+# http://wiki.archlinux.org/index.php/Color_Bash_Prompt
+GREEN="\[\033[32m\]"
+WHITE="\[\033[0m\]"
+RED="\[\033[31m\]"
+YELLOW="\[\033[33m\]"
+export PS1="\n$GREEN\w/ $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"

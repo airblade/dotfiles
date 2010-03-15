@@ -1,0 +1,4 @@
+# Vi keybindings for OS X 10.5
+# http://geminstallthat.wordpress.com/2008/10/19/adding-vi-keybindings-to-irb-scriptconsole-mysql/
+# http://www.mrchucho.net/2007/11/06/leopard-readline-and-vi-bindings
+bind -v

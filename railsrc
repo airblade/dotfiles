@@ -1,0 +1,46 @@
+# From http://pastie.caboo.se/60972
+# Usage in script/console:
+# >> sql 'select * from groups'
+# => ...
+def sql(query)
+  ActiveRecord::Base.connection.select_all(query)
+end
+
+# Advanced Rails Recipe 38.
+def show_log
+  change_log STDOUT
+end
+
+def hide_log
+  change_log nil
+end
+
+def change_log(stream)
+  ActiveRecord::Base.logger = Logger.new(stream)
+
+  if Rails::VERSION::MAJOR >=2 and Rails::VERSION::MINOR >=2
+    ActiveRecord::Base.connection_pool.clear_reloadable_connections!
+  else
+    ActiveRecord::Base.clear_active_connections!
+  end
+end
+
+
+# This works if defined in the console.  But it doesn't work here :(
+=begin
+class ActiveRecord::Base
+  def self./(*args)
+    find *args
+  end
+end
+=end
+
+# Lazy-load this AR code so the AR constant is available.
+# Invoke once the console is loaded.
+def lazy
+  ActiveRecord::Base.class_eval do
+    def self./(*args)
+      find *args
+    end
+  end
+end

@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+# Ensure this is chmod 755, and add the following line to ~/.bashrc:
+#   complete -C path/to/this/script -o default rake
+#
+# From:
+#
+# * http://errtheblog.com/posts/31-rake-around-the-rosie
+# * http://fhwang.net/rb/rake-complete.rb
+#
+# Improved by moi:
+#
+# * Stores caches in their own subdirectory.
+# * Caches named sensibly so you know which is which (e.g. for deleting).
+# * Extracts rake task names from the listing once (on writing the cache) rather
+#   than every invocation.
+# * Emits all tasks rather than 'nil' when invoked with no arguments.
+
+require 'fileutils'
+
+# Rake walks up the directory tree looking for a Rakefile.
+# So we don't need to check there is one in our current directory.
+# This means we'll end up with a cache per directory from which we
+# run rake, rather than per application.
+#exit 0 unless File.file? File.join(Dir.pwd, 'Rakefile')
+exit 0 unless /^rake\b/ =~ ENV["COMP_LINE"]
+
+
+def rake_silent_tasks
+  cache_dir = File.join File.expand_path('~'), '.raketabs'
+  FileUtils.mkdir_p cache_dir
+  if File.exists?( dotcache = File.join(cache_dir, "#{Dir.pwd.gsub %r{/}, '_'}") )
+    File.read(dotcache)
+  else
+    tasks = `rake --silent --tasks`.split("\n")[1..-1].map { |line| line.split[1] }
+    File.open(dotcache, 'w') { |f| f.puts tasks }
+    tasks
+  end
+end
+
+after_match = $'
+task_match = (after_match.empty? || after_match =~ /\s$/) ? nil : after_match.split.last
+tasks = task_match ?
+  rake_silent_tasks.select { |t| /^#{Regexp.escape task_match}/ =~ t } :
+  rake_silent_tasks
+
+# handle namespaces
+if task_match =~ /^([-\w:]+:)/
+  upto_last_colon = $1
+  after_match = $'
+  tasks = tasks.map { |t| (t =~ /^#{Regexp.escape upto_last_colon}([-\w:]+)$/) ? "#{$1}" : t }
+end
+
+puts tasks
+exit 0
