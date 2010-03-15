@@ -17,7 +17,7 @@ alias ms='mongrel_rails start'
 alias dbm='rake db:migrate'
 
 # Passenger
-alias rst='touch tmp/restart'
+alias rst='touch tmp/restart.txt'
 
 # Directories
 alias less='less -r'
