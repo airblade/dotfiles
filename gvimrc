@@ -13,4 +13,5 @@ winpos 720 44                     " Centre of screen.
 highlight SPELLING guibg=blue     " Highlight likely typos.
 match SPELLING /toin/
 
-nnoremap <CR> :noh<CR>            " <CR> turns off search highlighting.
+" <CR> turns off search highlighting.
+nnoremap <CR> :noh<CR>

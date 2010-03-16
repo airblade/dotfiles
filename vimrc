@@ -35,8 +35,10 @@ set nowritebackup                 " And again.
 set tildeop                       " Make tilde command behave like an operator.
 set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
-cnoremap ecd edit <c-r>=expand("%:h")<CR><CR>   " Open directory of current file.
-cnoremap cdc cd <c-r>=expand("%:h")<CR><CR>     " Change directory to current file's.
+" Open directory of current file.
+cnoremap ecd edit <c-r>=expand("%:h")<CR><CR>
+" Change directory to current file's.
+cnoremap cdc cd <c-r>=expand("%:h")<CR><CR>
 
 " Map § to # for typing convenience
 set iminsert=1
