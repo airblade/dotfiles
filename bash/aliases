@@ -14,7 +14,7 @@ alias sg='script/generate'
 alias sgm='script/generate migration'
 alias sp='script/plugin install'
 alias ms='mongrel_rails start'
-alias dbm='rake db:migrate'
+alias rdbm='rake db:migrate'
 
 # Passenger
 alias rst='touch tmp/restart.txt'
