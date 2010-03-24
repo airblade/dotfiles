@@ -1,6 +1,8 @@
-set antialias                     " MacVim: smooth fonts.
-set encoding=utf-8                " MacVim: use UTF-8 everywhere.
-set guioptions-=T                 " MacVim: hide toolbar.
+if has("gui_macvim")
+  set antialias                   " MacVim: smooth fonts.
+  set encoding=utf-8              " MacVim: use UTF-8 everywhere.
+  set guioptions-=T               " MacVim: hide toolbar.
+endif
 
 set background=dark               " Dark background.
 colorscheme vividchalk            " Pretty colours.
