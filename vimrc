@@ -36,8 +36,8 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location to simplify 
 set tildeop                       " Make tilde command behave like an operator.
 set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
-" <CR> turns off search highlighting.
-nnoremap <CR> :noh<CR>
+" <Leader>h turns off search highlighting.
+nnoremap <Leader>h :noh<CR>
 
 " Open directory of current file.
 cnoremap ecd edit <c-r>=expand("%:h")<CR><CR>
