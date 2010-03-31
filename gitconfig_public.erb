@@ -1,0 +1,26 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	df = diff
+	tlog = log --pretty=oneline --abbrev-commit --graph --decorate
+	unstage = reset HEAD
+	discard = checkout --
+	history = log --
+[apply]
+	whitespace = nowarn
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	ui = true
+[gc]
+	auto = 1
+[push]
+	default = tracking
+[merge]
+	summary = true
+[core]
+	excludesfile = <%= ENV['HOME'] %>/.gitignore

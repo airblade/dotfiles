@@ -1,7 +1,10 @@
 # Ignore these because they contain private keys.
 bash/project_aliases
+*_private
+
+# Generated.
 gemrc
-gitconfig
+gitconfig.erb
 
 # Ignore this because it points to private projects.
 passenger_vhosts.conf
