@@ -22,6 +22,7 @@ alias rst='touch tmp/restart.txt'
 # Directories
 alias less='less -r'
 alias ls='ls -G'  # colourful
+alias lsdot='ls -lAd .*'
 
 # Changing directory
 alias ..='cd ..'
