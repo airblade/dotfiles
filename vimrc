@@ -107,6 +107,7 @@ let g:bufExplorerShowRelativePath=1
 autocmd User Rails silent! Rnavcommand config config -glob=*.* -suffix= -default=routes.rb
 autocmd User Rails silent! Rnavcommand ncss app/views/stylesheets -glob=* -suffix=.css.ncss -default=application
 
-" ack.vim (AckG: search files by name)
+" ack.vim
 nmap <silent> <unique> <Leader>a :Ack
-nmap <silent> <unique> <Leader>g :AckG
+nmap <silent> <unique> <Leader>as :AckFromSearch
+nmap <silent> <unique> <Leader>af :AckFile
