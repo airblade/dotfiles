@@ -1,2 +1,4 @@
 --smart-case
 --all-types
+--ignore-dir=log
+--ignore-dir=db/sphinx
