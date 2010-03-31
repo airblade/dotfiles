@@ -9,7 +9,7 @@ task :install do
   @replace_all = false
 
   Dir['*'].each do |file|
-    next if %w[Rakefile README.rdoc LICENSE].include? file
+    next if %w[Rakefile README.md LICENSE].include? file
     next if file =~ /_public|_private/
     next if generated? file
     process file
