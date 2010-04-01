@@ -60,6 +60,19 @@ noremap Y y$
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
+" Enclose visual selection with =begin and =end
+vmap <Leader>c <Esc>'<O=begin<Esc>'>o=end<Esc>
+" Remove enclosing =begin and =end
+" TODO: move this into a filetype plugin.
+nmap <silent> <Leader>z :call ZapComment()<CR>
+function! ZapComment()
+  let pos = getpos(".")
+  g?=begin?d
+  g/=end/d
+  let pos[1] = pos[1] - 1
+  call setpos('.', pos)
+endfunction
+
 " Use cursor keys to navigate buffers.
 map  <Right> :bnext<CR>
 map  <Left>  :bprev<CR>
