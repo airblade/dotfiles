@@ -60,18 +60,30 @@ noremap Y y$
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
-" Enclose visual selection with =begin and =end
+
+" TODO:
+" - move this Ruby commenting into a filetype plugin.
+" - use `comments` option.
+
+" Enclose visual selection with =begin and =end.
 vmap <Leader>c <Esc>'<O=begin<Esc>'>o=end<Esc>
-" Remove enclosing =begin and =end
-" TODO: move this into a filetype plugin.
+
+" Remove enclosing =begin and =end.
 nmap <silent> <Leader>z :call ZapComment()<CR>
 function! ZapComment()
   let pos = getpos(".")
-  g?=begin?d
-  g/=end/d
+  let line_number = search("=begin", "bc")
+  if line_number > 0
+    exe line_number . "d"
+  endif
+  line_number = search("=end", "c")
+  if line_number > 0
+    exe line_number . "d"
+  endif
   let pos[1] = pos[1] - 1
   call setpos('.', pos)
 endfunction
+
 
 " Use cursor keys to navigate buffers.
 map  <Right> :bnext<CR>
