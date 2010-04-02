@@ -74,11 +74,11 @@ function! ZapComment()
   let pos = getpos(".")
   let line_number = search("=begin", "bc")
   if line_number > 0
-    exe line_number . "d"
+    exe line_number . "d _"
   endif
-  line_number = search("=end", "c")
+  let line_number = search("=end", "c")
   if line_number > 0
-    exe line_number . "d"
+    exe line_number . "d _"
   endif
   let pos[1] = pos[1] - 1
   call setpos('.', pos)
