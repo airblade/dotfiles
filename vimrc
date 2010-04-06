@@ -31,8 +31,8 @@ set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
 
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " Don't make a backup while we're working.
+set nobackup                      " No backups.
+set nowritebackup                 " No backups.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location to simplify crash recovery.
 
 set tildeop                       " Make tilde command behave like an operator.
