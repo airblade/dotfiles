@@ -119,8 +119,11 @@ endif
 "
 
 
+" PeepOpen
+map <Leader>f <Plug>PeepOpen
+
 " FuzzyFinder TextMate
-map <Leader>f :FuzzyFinderTextMate<CR>
+map <Leader>t :FuzzyFinderTextMate<CR>
 map <Leader>r :FuzzyFinderTextMateRefreshFiles<CR>
 let g:fuzzy_ignore = "*.log,db/sphinx/**"
 let g:fuzzy_matching_limit = 30
