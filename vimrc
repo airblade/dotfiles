@@ -38,6 +38,9 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location to simplify 
 set tildeop                       " Make tilde command behave like an operator.
 set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
+" Capitalise the first letter of every word on a line.
+nnoremap <Leader>u :s/\<./\u&/g<CR>
+
 " <Leader>h turns off search highlighting.
 nnoremap <Leader>h :noh<CR>
 
@@ -130,6 +133,7 @@ let g:fuzzy_matching_limit = 30
 
 " BufExplorer configuration
 let g:bufExplorerShowRelativePath=1
+"let g:bufExplorerShowUnlisted=1
 
 " rails.vim configuration
 autocmd User Rails silent! Rnavcommand config config -glob=*.* -suffix= -default=routes.rb
