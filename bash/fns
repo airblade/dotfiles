@@ -10,7 +10,7 @@ function lg {
 
 # cd to first matching gem directory.
 function cdgem {
-  cd /usr/local/lib/ruby/gems/1.8/gems/; cd `ls | grep $1 | sort | tail -1`
+  cd /Library/Ruby/Gems/1.8/gems/; cd `ls | grep $1 | sort | tail -1`
 }
 
 # Create a new Rails app from a template..
