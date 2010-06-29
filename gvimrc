@@ -10,10 +10,10 @@ colorscheme vividchalk            " Pretty colours.
 colorscheme grb3                  " Gary Bernhardt: http://bitbucket.org/garybernhardt/dotfiles/src/tip/.vimrc
 set guifont=Inconsolata:h11       " Decent font.
 
-" desktop
+" external screen
 set lines=103 columns=120         " Big window.
 winpos 720 44                     " Centre of screen.
-" laptop
+" laptop screen
 "set lines=71 columns=120         " Big window.
 "winpos 365 878                     " Centre of screen.
 
