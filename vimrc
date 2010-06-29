@@ -87,6 +87,8 @@ function! ZapComment()
   call setpos('.', pos)
 endfunction
 
+" Markdown preview.  http://rtomayko.github.com/bcat/
+map <Leader>pm :!markdown % <Bar>bcat<CR>
 
 " Use cursor keys to navigate buffers.
 map  <Right> :bnext<CR>
