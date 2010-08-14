@@ -5,7 +5,7 @@ alias ea='vim ~/dotfiles/bash/aliases'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Git
-alias gs='git status'
+alias gs='git status -s'
 alias gd='git diff'
 
 # Rails
