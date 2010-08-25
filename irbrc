@@ -12,7 +12,7 @@ IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
 require 'ap'
 
-# Use awesome_prin as the default formatter.
+# Use awesome_print as the default formatter.
 IRB::Irb.class_eval do
   def output_value
     ap @context.last_value
