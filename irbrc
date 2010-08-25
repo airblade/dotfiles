@@ -1,24 +1,53 @@
 require 'rubygems'
-require 'wirble'
 require 'irb/completion'
-require 'pp'
+require 'irb/ext/save-history'
 
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-IRB.conf[:AUTO_INDENT] = true
-IRB.conf[:USE_READLINE] = true  # to assist tab completion somehow
-IRB.conf[:PROMPT][ IRB.conf[:PROMPT_MODE] ][:RETURN] = "=> %s\n\n"
+# Save-history does not work out of the box.
+# http://stackoverflow.com/questions/2065923/irb-history-not-working
+# http://www.ruby-forum.com/topic/189523
+# /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/site_ruby/1.8/irb/ext/save-history.rb
+IRB.conf[:SAVE_HISTORY] = 500
+IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb_history')
+IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
-# Next line suppresses printing of return values.
-# Posted to Ruby-Talk by Ara T Howard.
-# -- Seems to cause Mongrel (but not script/console) to spew errors on console --
-#IRB.conf[:PROMPT][ IRB.conf[:PROMPT_MODE] ][:RETURN]=''
+require 'ap'
 
-Wirble.init
-Wirble.colorize
+# Use awesome_prin as the default formatter.
+IRB::Irb.class_eval do
+  def output_value
+    ap @context.last_value
+  end
+end
 
 class Object
   def local_methods(obj = self)
     (obj.methods - obj.class.superclass.instance_methods).sort
+  end
+
+  # http://github.com/rtomayko/dotfiles/blob/rtomayko/.irbrc
+  def ls(obj=self)
+    width = `stty size 2>/dev/null`.split(/\s+/, 2).last.to_i
+    width = 80 if width == 0
+    local_methods(obj).each_slice(3) do |meths|
+      pattern = "%-#{width / 3}s" * meths.length
+      puts pattern % meths
+    end
+  end
+
+  # http://github.com/ryanb/dotfiles/blob/master/irbrc
+  #
+  # print documentation
+  #
+  #   ri 'Array#pop'
+  #   Array.ri
+  #   Array.ri :pop
+  #   arr.ri :pop
+  def ri(method = nil)
+    unless method && method =~ /^[A-Z]/ # if class isn't specified
+      klass = self.kind_of?(Class) ? name : self.class.name
+      method = [klass, method].compact.join('#')
+    end
+    system 'ri', method.to_s
   end
 end
 
@@ -30,106 +59,11 @@ def paste
   `pbpaste`
 end
 
-def ep
-  eval paste
+# http://github.com/rtomayko/dotfiles/blob/rtomayko/.irbrc
+# reload this .irbrc
+def IRB.reload
+  load __FILE__
 end
 
-
-# http://ozmm.org/posts/time_in_irb.html
-# Use like unix's time command.
-# E.g. >> time { sleep 1 }
-def time(times = 1)
-  require 'benchmark'
-  ret = nil
-  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
-  ret
-end
-
-# FastRi integration.
-# http://eigenclass.org/hiki/irb+ri+completion
-# http://mislav.caboo.se/rails/faster-ri-documentation/
-require 'irb/completion'
-
-RICompletionProc = proc{|input|
-  bind = IRB.conf[:MAIN_CONTEXT].workspace.binding
-  case input
-  when /(\s*(.*)\.ri_)(.*)/
-    pre = $1
-    receiver = $2
-    meth = $3 ? /\A#{Regexp.quote($3)}/ : /./ #}
-    begin
-      candidates = eval("#{receiver}.methods", bind).map do |m|
-        case m
-        when /[A-Za-z_]/; m
-        else # needs escaping
-          %{"#{m}"}
-        end
-      end
-      candidates = candidates.grep(meth)
-      candidates.map{|s| pre + s }
-    rescue Exception
-      candidates = []
-    end
-  when /([A-Z]\w+)#(\w*)/ #}
-    klass = $1
-    meth = $2 ? /\A#{Regexp.quote($2)}/ : /./
-    candidates = eval("#{klass}.instance_methods(false)", bind)
-    candidates = candidates.grep(meth)
-    candidates.map{|s| "'" + klass + '#' + s + "'"}
-  else
-    IRB::InputCompletor::CompletionProc.call(input)
-  end
-}
-#Readline.basic_word_break_characters= " \t\n\"\\'`><=;|&{("
-Readline.basic_word_break_characters= " \t\n\\><=;|&"
-Readline.completion_proc = RICompletionProc
-
-# Load ~/.railrc if appropriate.
 # http://ozmm.org/posts/railsrc.html
 load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
-
-
-# http://themomorohoax.com/2009/04/07/ruby-irb-tip-try-again-faster
-
-def ls
-  %x{ls}.split "\n"
-end
-
-# File load.
-def fl(file_name)
-  file_name += '.rb' unless file_name =~ /\.rb/
-  @@recent = file_name
-  load "#{file_name}"
-end
-
-# Reloads the last file you loaded.
-def rl
-  fl @@recent
-end
-
-# Retry.  Reloads the last file loaded and re-runs the last command you tried.
-def rt
-  rl
-  eval choose_last_command
-end
-
-def choose_last_command
-  real_last = Readline::HISTORY.to_a[-2]
-  real_last == 'rt' ? @@saved_last : (@@saved_last = real_last)
-end
-
-
-# Colour conversion
-def hex(*decimals)
-  hexes = decimals.map { |d| '%02x' % d }
-  out = "##{hexes.join}"
-  copy out
-  puts "copied #{out}"
-end
-
-def rgb(hex)
-  decimals = hex.scan(/../).map { |h| h.to_i 16 }
-  out = decimals.join ', '
-  copy out
-  puts "copied #{out}"
-end
