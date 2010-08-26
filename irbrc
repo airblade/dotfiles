@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'irb/completion'
 require 'irb/ext/save-history'
 
@@ -10,7 +9,13 @@ IRB.conf[:SAVE_HISTORY] = 500
 IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb_history')
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
-require 'ap'
+%w[ rubygems ap interactive_editor ].each do |gem|
+  begin
+    require gem
+  rescue LoadError
+    puts "Failed to load #{gem} gem."
+  end
+end
 
 # Use awesome_print as the default formatter.
 IRB::Irb.class_eval do
