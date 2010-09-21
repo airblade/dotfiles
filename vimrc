@@ -18,7 +18,7 @@ set wildmode=list:longest         " Complete files like a shell.
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set number                        " Show line numbers.
+set number                        " Show absolute line numbers (cf. relativenumber).
 set ruler                         " Show cursor position.
 
 set incsearch                     " Highlight matches as you type.
@@ -26,6 +26,10 @@ set hlsearch                      " Highlight matches.
 
 set wrap                          " Turn on line wrapping.
 set scrolloff=3                   " Show 3 lines of context around the cursor.
+
+set shiftwidth=2                  " 
+set tabstop=2                     " Tabs and spaces.
+set expandtab                     " 
 
 set title                         " Set the terminal's title
 
@@ -38,11 +42,17 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location to simplify 
 set tildeop                       " Make tilde command behave like an operator.
 set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
+let g:sql_type_default = "mysql"
+
+" Very magic regexes.
+nnoremap / /\v
+vnoremap / /\v
+
 " Capitalise the first letter of every word on a line.
 nnoremap <Leader>u :s/\<./\u&/g<CR>
 
-" <Leader>h turns off search highlighting.
-nnoremap <Leader>h :noh<CR>
+" <Leader><space> turns off search highlighting.
+nnoremap <Leader><space> :noh<CR>
 
 " Open directory of current file.
 cnoremap ecd edit <c-r>=expand("%:h")<CR><CR>
@@ -62,6 +72,9 @@ noremap Y y$
 " Make * and # work with visual selection.
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
+
+" Save on losing focus
+"au FocusLost * :wa
 
 
 " TODO:
@@ -128,10 +141,10 @@ endif
 map <Leader>f <Plug>PeepOpen
 
 " FuzzyFinder TextMate
-map <Leader>t :FuzzyFinderTextMate<CR>
-map <Leader>r :FuzzyFinderTextMateRefreshFiles<CR>
-let g:fuzzy_ignore = "*.log,db/sphinx/**"
-let g:fuzzy_matching_limit = 30
+"map <Leader>t :FuzzyFinderTextMate<CR>
+"map <Leader>r :FuzzyFinderTextMateRefreshFiles<CR>
+"let g:fuzzy_ignore = "*.log,db/sphinx/**"
+"let g:fuzzy_matching_limit = 30
 
 " BufExplorer configuration
 let g:bufExplorerShowRelativePath=1
