@@ -71,6 +71,9 @@ lnoremap § #
 " Make Y consistent with D and C (instead of yy)
 noremap Y y$
 
+" Visually select the text that was most recently edited/pasted.
+nmap gV `[v`]
+
 " Make * and # work with visual selection.
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
