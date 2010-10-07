@@ -42,6 +42,8 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location to simplify 
 set tildeop                       " Make tilde command behave like an operator.
 set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
+set noequalalways                 " Resize windows as little as possible.
+
 let g:sql_type_default = "mysql"
 
 " Very magic regexes.
