@@ -44,6 +44,8 @@ set shortmess=atI                 " Avoid unnecessary hit-enter prompts.
 
 set noequalalways                 " Resize windows as little as possible.
 
+set autoread                      " Automatically re-read files changed outside Vim.
+
 let g:sql_type_default = "mysql"
 
 " Very magic regexes.
