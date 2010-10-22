@@ -8,6 +8,7 @@ alias m='mvim'
 # Git
 alias gs='git status -s'
 alias gd='git diff'
+alias conflicts?='ack "<<<<<<< HEAD" -l'
 
 # Rails
 alias sc='script/console'
