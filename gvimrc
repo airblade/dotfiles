@@ -6,7 +6,6 @@ if has("gui_macvim")
 endif
 
 set background=dark               " Dark background.
-colorscheme vividchalk            " Pretty colours.
 colorscheme grb3                  " Gary Bernhardt: http://bitbucket.org/garybernhardt/dotfiles/src/tip/.vimrc
 set guifont=Inconsolata:h11       " Decent font.
 
