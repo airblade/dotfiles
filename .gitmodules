@@ -22,3 +22,6 @@
 [submodule "vim/bundle/vim-rake"]
 	path = vim/bundle/vim-rake
 	url = https://github.com/tpope/vim-rake.git
+[submodule "vim/bundle/vim-endwise"]
+	path = vim/bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
