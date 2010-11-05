@@ -42,3 +42,6 @@
 	path = vim/bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
 	ignore = untracked
+[submodule "vim/bundle/vim-ruby"]
+	path = vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
