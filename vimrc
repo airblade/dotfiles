@@ -1,5 +1,9 @@
 set nocompatible                  " Must come first because it changes other options.
 
+" Manage the runtime path with  Pathogen.
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
