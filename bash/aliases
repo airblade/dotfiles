@@ -8,6 +8,7 @@ alias m='mvim'
 # Git
 alias gs='git status -s'
 alias gd='git diff'
+alias gl='git tlog -10'
 alias conflicts?='ack "<<<<<<< HEAD" -l'
 
 # Rails
@@ -17,6 +18,9 @@ alias sgm='script/generate migration'
 alias sp='script/plugin install'
 alias ms='mongrel_rails start'
 alias rdbm='rake db:migrate'
+
+alias be='bundle exec'
+alias bert='bundle exec rake test'
 
 # Passenger
 alias rst='touch tmp/restart.txt'
@@ -36,3 +40,6 @@ alias .....='cd ../../../..'
 alias pg="ps wwaux | grep -v 'grep' | grep -i"
 alias topm='top -o vsize' # memory
 alias topc='top -o cpu'   # cpu
+
+# Apps
+alias acorn='open -a Acorn'
