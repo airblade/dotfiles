@@ -5,7 +5,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
 export PATH=$PATH:~/bin
 
 # The one true text editor.
-export EDITOR='/Users/andy/bin/vim'
+export EDITOR='/Users/andy/bin/vim --nomru'
 
 # Graphviz.  See http://www.ryandesign.com/graphviz/faq.php
 #export PATH=$PATH:/usr/local/graphviz/bin
