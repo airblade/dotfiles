@@ -48,3 +48,9 @@ function gca {
 function pless {
   pygmentize $1 | less -r
 }
+
+# https://gist.github.com/810859
+# $ gh-get https://github.com/defunkt/facebox/blob/master/src/facebox.js
+function gh-get () {
+  curl -#O $(echo $1 | sed 's|raw|blob|')
+}
