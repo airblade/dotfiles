@@ -1,3 +1,10 @@
+class String
+  # Convert a hex colour string to RGB.
+  def rgb
+    self.tr('#','').scan(/../).map { |h| h.to_i(16) }.join ' '
+  end
+end
+
 # From http://pastie.caboo.se/60972
 # Usage in script/console:
 # >> sql 'select * from groups'
