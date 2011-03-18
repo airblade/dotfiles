@@ -19,8 +19,11 @@ alias sp='script/plugin install'
 alias ms='mongrel_rails start'
 alias rdbm='rake db:migrate'
 
+# Bundler
 alias be='bundle exec'
+alias ber='bundle exec rake'
 alias bert='bundle exec rake test'
+alias besc='bundle exec script/cucumber'
 
 # Passenger
 alias rst='touch tmp/restart.txt'
