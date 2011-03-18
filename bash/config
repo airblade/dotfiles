@@ -18,3 +18,6 @@ WHITE="\[\033[0m\]"
 RED="\[\033[31m\]"
 YELLOW="\[\033[33m\]"
 export PS1="\n$GREEN\w/ $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
+
+# http://jasoncoffin.com/2011/03/11/utilize-vi-keyboard-shortcuts-in-your-terminal/
+set -o vi
