@@ -1,7 +1,11 @@
 --- 
+# https://github.com/rubygems/rubygems/blob/master/lib/rubygems/config_file.rb
 :benchmark: false
 :update_sources: true
-gem: -n/usr/local/bin --no-ri --no-rdoc --verbose
+# -n is short form of --bindir in Rubygems' install/update options.
+# https://github.com/rubygems/rubygems/blob/master/lib/rubygems/install_update_options.rb#L41-45
+gem: -n/usr/local/bin --no-ri --no-rdoc
+build: --verbose
 :bulk_threshold: 1000
 :verbose: true
 :sources: 
