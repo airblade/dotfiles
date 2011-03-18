@@ -35,8 +35,11 @@ function ghc {
 }
 
 # Commit pending changes quoting args as message.
-# e.g.: gg Fix ICBM launch bug.
-function gg {
+# e.g.: gc Fix ICBM launch bug.
+function gc {
+  git commit -m "$*"
+}
+function gca {
   git commit -am "$*"
 }
 
