@@ -1,14 +1,16 @@
 [alias]
 	co = checkout
 	ci = commit
+	caa = commit -a --amend -C HEAD
 	st = status
 	br = branch
-	df = diff
 	ds = diff -M -C --find-copies-harder -l64 --stat HEAD
 	tlog = log --pretty=oneline --abbrev-commit --graph --decorate
+	# Undo your last commit, but don't throw away your changes
+	undo = reset --soft HEAD^
 	unstage = reset HEAD
 	discard = checkout --
-	history = log --
+	ri = !sh -c 'git rebase -i HEAD~"$1"' -
 [apply]
 	whitespace = nowarn
 [color]
