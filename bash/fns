@@ -52,5 +52,5 @@ function pless {
 # https://gist.github.com/810859
 # $ gh-get https://github.com/defunkt/facebox/blob/master/src/facebox.js
 function gh-get () {
-  curl -#O $(echo $1 | sed 's|raw|blob|')
+  curl -#O $(echo $1 | sed 's|blob|raw|')
 }
