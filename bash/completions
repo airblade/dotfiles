@@ -13,3 +13,5 @@ complete -C ~/dotfiles/bash/completion_scripts/complete_cap -o default cap
 
 # Git completion.
 source ~/dotfiles/bash/completion_scripts/git-completion.bash
+# Git completion for my `g` alias.
+complete -o default -o nospace -F _git g

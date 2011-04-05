@@ -7,6 +7,7 @@ alias v='vim'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Git
+alias g='git'
 alias gs='git status -s'
 alias gd='git diff'
 alias gl='git tlog -10'
