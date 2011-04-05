@@ -2,8 +2,9 @@
 alias ea='vim ~/dotfiles/bash/aliases'
 
 # The one true text editor
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias m='mvim'
+alias v='vim'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Git
 alias gs='git status -s'
