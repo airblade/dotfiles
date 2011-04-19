@@ -12,6 +12,6 @@ complete -C ~/dotfiles/bash/completion_scripts/complete_rake -o default -o nospa
 complete -C ~/dotfiles/bash/completion_scripts/complete_cap -o default -o nospace cap
 
 # Git completion.
-source ~/dotfiles/bash/completion_scripts/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-completion.bash
 # Git completion for my `g` alias.
 complete -o default -o nospace -F _git g
