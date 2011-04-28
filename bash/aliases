@@ -12,6 +12,9 @@ alias gs='git status -s'
 alias gd='git diff'
 alias gl='git l -10'
 
+# Gems
+alias gemv='gem query -b -n'
+
 # Rails
 alias sc='script/console'
 alias sg='script/generate'
