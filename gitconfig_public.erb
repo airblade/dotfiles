@@ -4,15 +4,17 @@
 	caa = commit -a --amend -C HEAD
 	st = status
 	br = branch
-	ds = diff -M -C --find-copies-harder -l64 --stat HEAD
-	tlog = log --pretty=oneline --abbrev-commit --graph --decorate
+  l = log --abbrev-commit --graph --date=relative
+  r = !git l -10
 	# Undo your last commit, but don't throw away your changes
 	undo = reset --soft HEAD^
 	unstage = reset HEAD
 	discard = checkout --
-	ri = !sh -c 'git rebase -i HEAD~"$1"' -
+	ir = !sh -c 'git rebase -i HEAD~"$1"' -
 [apply]
 	whitespace = nowarn
+[format]
+  pretty=format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)(%ar)
 [color]
 	status = auto
 	branch = auto
