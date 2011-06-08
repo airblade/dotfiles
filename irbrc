@@ -73,4 +73,7 @@ def IRB.reload
 end
 
 # http://ozmm.org/posts/railsrc.html
-load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
+#load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
+if defined?(Rails) && Rails.env
+  load File.dirname(__FILE__) + '/.railsrc'
+end
