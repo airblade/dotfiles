@@ -3,7 +3,6 @@ bash/project_aliases
 *_private
 
 # Generated.
-gemrc
 gitconfig.erb
 
 # Ignore this because it points to private projects.
