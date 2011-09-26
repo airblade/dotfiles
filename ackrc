@@ -1,4 +1,8 @@
+# lexically sort filenames
+--sort-files
 --smart-case
 --all-types
 --ignore-dir=log
 --ignore-dir=db/sphinx
+--ignore-dir=bundle
+--ignore-dir=vendor
