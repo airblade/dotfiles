@@ -50,3 +50,5 @@ alias topc='top -o cpu'   # cpu
 
 # Apps
 alias acorn='open -a Acorn'
+
+alias vacuum_mail='sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
