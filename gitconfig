@@ -1,31 +1,42 @@
+[user]
+	name = Andy Stewart
+	email = boss@airbladesoftware.com
+
+[github]
+	user = airblade
+	token = !security find-generic-password -gs \"GitHub API Token\" 2>&1 >/dev/null | awk '/password/ {print $2}' | tr -d \\\"
+
 [alias]
 	co = checkout
 	ci = commit
 	caa = commit -a --amend -C HEAD
 	st = status
 	br = branch
-  l = log --abbrev-commit --graph --date=relative
-  r = !git l -10
+	tlog = log --pretty=oneline --abbrev-commit --graph --decorate
 	# Undo your last commit, but don't throw away your changes
 	undo = reset --soft HEAD^
 	unstage = reset HEAD
 	discard = checkout --
-	ir = !sh -c 'git rebase -i HEAD~"$1"' -
+	ri = !sh -c 'git rebase -i HEAD~"$1"' -
+
 [apply]
 	whitespace = nowarn
-[format]
-  pretty=format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)(%ar) %C(cyan)<%an>
+
 [color]
 	status = auto
 	branch = auto
 	diff = auto
 	interactive = auto
 	ui = true
+
 [gc]
 	auto = 1
+
 [push]
 	default = tracking
+
 [merge]
 	summary = true
+
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
+	excludesfile = ~/.gitignore
