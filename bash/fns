@@ -13,6 +13,11 @@ function cdgem {
   cd /Library/Ruby/Gems/1.8/gems/; cd `ls | grep $1 | sort | tail -1`
 }
 
+# cd to directory of bundled gem.
+function cdbgem {
+  cd `bundle show $1`
+}
+
 # Create a new Rails app from a template..
 function railsapp {
   template=$1
@@ -52,5 +57,5 @@ function pless {
 # https://gist.github.com/810859
 # $ gh-get https://github.com/defunkt/facebox/blob/master/src/facebox.js
 function gh-get () {
-  curl -#O $(echo $1 | sed 's|blob|raw|')
+  curl -#O $(echo $1 | sed 's|blob/||' | sed 's|github.com|raw.github.com|')
 }
