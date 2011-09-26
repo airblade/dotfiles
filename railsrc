@@ -1,10 +1,3 @@
-class String
-  # Convert a hex colour string to RGB.
-  def rgb
-    self.tr('#','').scan(/../).map { |h| h.to_i(16) }.join ' '
-  end
-end
-
 # From http://pastie.caboo.se/60972
 # Usage in script/console:
 # >> sql 'select * from groups'
@@ -29,25 +22,5 @@ def change_log(stream)
     ActiveRecord::Base.connection_pool.clear_reloadable_connections!
   else
     ActiveRecord::Base.clear_active_connections!
-  end
-end
-
-
-# This works if defined in the console.  But it doesn't work here :(
-=begin
-class ActiveRecord::Base
-  def self./(*args)
-    find *args
-  end
-end
-=end
-
-# Lazy-load this AR code so the AR constant is available.
-# Invoke once the console is loaded.
-def lazy
-  ActiveRecord::Base.class_eval do
-    def self./(*args)
-      find *args
-    end
   end
 end
