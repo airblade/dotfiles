@@ -12,6 +12,9 @@ alias gs='git status -s'
 alias gd='git diff'
 alias gl='git l -10'
 
+# rbenv
+alias rr='rbenv rehash'
+
 # Gems
 alias gemv='gem query -b -n'
 
