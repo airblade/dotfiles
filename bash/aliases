@@ -15,17 +15,6 @@ alias gl='git l -10'
 # rbenv
 alias rr='rbenv rehash'
 
-# Gems
-alias gemv='gem query -b -n'
-
-# Rails
-alias sc='script/console'
-alias sg='script/generate'
-alias sgm='script/generate migration'
-alias sp='script/plugin install'
-alias ms='mongrel_rails start'
-alias rdbm='rake db:migrate'
-
 # Bundler
 alias be='bundle exec'
 alias ber='bundle exec rake'
