@@ -12,7 +12,7 @@
 	caa = commit -a --amend -C HEAD
 	st = status
 	br = branch
-	tlog = log --pretty=oneline --abbrev-commit --graph --decorate
+	l = log --abbrev-commit --graph --date=relative
 	# Undo your last commit, but don't throw away your changes
 	undo = reset --soft HEAD^
 	unstage = reset HEAD
@@ -21,6 +21,9 @@
 
 [apply]
 	whitespace = nowarn
+
+[format]
+	pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)(%ar) %C(cyan)<%an>
 
 [color]
 	status = auto
