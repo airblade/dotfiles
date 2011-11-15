@@ -36,7 +36,11 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 ruby_version='rbenv version | cut -d " " -f 1'
 
-export PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
+if [ `uname` = "Darwin" ]; then
+  export PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
+else
+  export PS1="\n$RED\w/  [\$($ruby_version)] \$(__git_ps1)\n$ $WHITE"
+fi
 
 # http://jasoncoffin.com/2011/03/11/utilize-vi-keyboard-shortcuts-in-your-terminal/
 set -o vi
