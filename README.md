@@ -1,13 +1,11 @@
 # Dotfiles
 
-Install with `rake install`.
+Install with `./install.sh`.
 
 
 ## Assumptions
 
 * The repo is at `~/dotfiles`.
-* You have MacVim installed at `/Applications/MacVim.app`.
-* Probably a few other things too ;)
 
 
 ## Vim
