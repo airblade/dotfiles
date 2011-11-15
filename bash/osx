@@ -1,0 +1,25 @@
+# aliases
+alias m='mvim'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias acorn='open -a Acorn'
+alias vacuum_mail='sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
+
+
+# config
+
+
+# env
+export EDITOR='/Users/andy/bin/vim --nomru'
+
+# Set up colours for ls.
+# The lscolors.sh file was generated on my Rails Machine by running:
+#
+# $ dircolors --sh /etc/DIR_COLORS > lscolors.sh
+#
+# The dircolors command does not appear to be available on OS X.
+#
+# TODO: cf http://github.com/rtomayko/dotfiles/blob/rtomayko/.bashrc#L238-247
+source ~/.dircolors/lscolors.sh
+
+
+# fns

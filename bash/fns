@@ -8,24 +8,6 @@ function lg {
   ls -la | grep -e "$@";
 }
 
-# cd to first matching gem directory.
-function cdgem {
-  cd /Library/Ruby/Gems/1.8/gems/; cd `ls | grep $1 | sort | tail -1`
-}
-
-# cd to directory of bundled gem.
-function cdbgem {
-  cd `bundle show $1`
-}
-
-# Create a new Rails app from a template..
-function railsapp {
-  template=$1
-  appname=$2
-  shift 2
-  rails $appname -m http://github.com/airblade/rails-templates/raw/master/$template.rb $@
-}
-
 # ghc (GitHub clone)
 # http://openmonkey.com/articles/2009/07/fast-github-clone-bash-function
 function ghc {
