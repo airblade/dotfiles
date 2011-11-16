@@ -8,8 +8,8 @@ egrep -v [0123456789]) )
 complete -o default -W "${SSH_COMPLETE[*]}" ssh
 
 # Rake and Capistrano completion.
-complete -C ~/dotfiles/bash/completion_scripts/complete_rake -o default -o nospace rake
-complete -C ~/dotfiles/bash/completion_scripts/complete_cap -o default -o nospace cap
+#complete -C ~/dotfiles/bash/completion_scripts/complete_rake -o default -o nospace rake
+#complete -C ~/dotfiles/bash/completion_scripts/complete_cap -o default -o nospace cap
 
 # Git completion.
 source /usr/local/etc/bash_completion.d/git-completion.bash
