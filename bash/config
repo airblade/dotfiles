@@ -6,7 +6,7 @@ shopt -s histappend
 # -a   append local history to global
 # -c   clear local history
 # -r   reload from global history
-export PROMPT_COMMAND='history -a; history -c; history -r'
+#export PROMPT_COMMAND='history -a; history -c; history -r'
 
 
 # Prompt.  Looks like:
