@@ -1,0 +1,43 @@
+# Keep command history from all tabs/windows.
+# http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows
+
+# append (not overwrite) history list to history file when shell exits
+shopt -s histappend
+# -a   append local history to global
+# -c   clear local history
+# -r   reload from global history
+#export PROMPT_COMMAND='history -a; history -c; history -r'
+
+
+# Prompt.  Looks like:
+#
+#   /path/to/current/directory/
+#   $ 
+#
+# If we are in a Git repo the current branch is shown like this:
+#
+#   /path/to/current/directory/  (branch_name)
+#   $ 
+#
+# __git_ps1 is set up by the git-completion.bash script bundled
+# with the Git source.
+#
+# Full list of colour codes here:
+# http://wiki.archlinux.org/index.php/Color_Bash_Prompt
+GREEN="\[\033[32m\]"
+WHITE="\[\033[0m\]"
+RED="\[\033[31m\]"
+YELLOW="\[\033[33m\]"
+CYAN="\[\033[36m\]"
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+ruby_version='rbenv version-name'
+
+if [ `uname` = "Darwin" ]; then
+  export PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
+else
+  export PS1="\n$RED\w/  [\$($ruby_version)] \$(__git_ps1)\n$ $WHITE"
+fi
