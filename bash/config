@@ -34,7 +34,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-ruby_version='rbenv version | cut -d " " -f 1'
+ruby_version='rbenv version-name'
 
 if [ `uname` = "Darwin" ]; then
   export PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
