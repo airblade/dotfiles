@@ -29,15 +29,26 @@ WHITE="\[\033[0m\]"
 RED="\[\033[31m\]"
 YELLOW="\[\033[33m\]"
 CYAN="\[\033[36m\]"
+BLUE="\[\033[34m\]"
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
 
 ruby_version='rbenv version-name'
+git_head='git rev-parse --short HEAD 2>/dev/null'
 
-if [ `uname` = "Darwin" ]; then
-  export PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)\n$GREEN$ $WHITE"
-else
-  export PS1="\n$RED\w/  [\$($ruby_version)] \$(__git_ps1)\n$ $WHITE"
-fi
+function build_prompt {
+  last="$?"
+  if [ `uname` = "Darwin" ]; then
+    if [ "$last" -eq 0 ]; then
+      PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)  $BLUE\$($git_head)\n$GREEN$ $WHITE"
+    else
+      PS1="\n$GREEN\w/  $CYAN[\$($ruby_version)] $YELLOW\$(__git_ps1)  $BLUE\$($git_head)\n$RED$ $WHITE"
+    fi
+  else
+    export PS1="\n$RED\w/  [\$($ruby_version)] \$(__git_ps1)\n$ $WHITE"
+  fi
+}
+
+PROMPT_COMMAND=build_prompt
