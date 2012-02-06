@@ -31,8 +31,12 @@ YELLOW="\[\033[33m\]"
 CYAN="\[\033[36m\]"
 BLUE="\[\033[34m\]"
 
+# (*) unstaged changes
+# (+) staged changes
 GIT_PS1_SHOWDIRTYSTATE=1
+# ($) stashed changes
 GIT_PS1_SHOWSTASHSTATE=1
+# (%) untracked files
 GIT_PS1_SHOWUNTRACKEDFILES=1
 
 ruby_version='rbenv version-name'
