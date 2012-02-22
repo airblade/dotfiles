@@ -3,7 +3,8 @@ set editing-mode vi
 
 set completion-ignore-case On
 
-
+# Key mappings.
+"§": '#'
 
 # A cross between <Command-r> for searching history, and up/down arrow
 # keys.
