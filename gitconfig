@@ -18,6 +18,8 @@
 	unstage = reset HEAD
 	discard = checkout --
 	ri = !sh -c 'git rebase -i HEAD~"$1"' -
+  # Expand an abbreviated SHA to a full 40 character one.
+	expand = rev-parse --verify
 
 [apply]
 	whitespace = nowarn
