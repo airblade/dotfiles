@@ -15,11 +15,13 @@ alias rr='rbenv rehash'
 
 # Bundler
 alias be='bundle exec'
-alias ber='bundle exec rake'
 alias bert='bundle exec rake test'
 alias besc='bundle exec script/cucumber'
 
-# Passenger
+# Rails
+alias r='script/rails'
+
+# Passenger / Pow
 alias rst='touch tmp/restart.txt'
 
 # Directories
@@ -34,6 +36,5 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # Processes
-alias pg="ps wwaux | grep -v 'grep' | grep -i"
 alias topm='top -o vsize' # memory
 alias topc='top -o cpu'   # cpu
