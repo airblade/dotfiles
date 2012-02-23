@@ -11,3 +11,6 @@ eval "$(rbenv init -)"
 # Ignore the tedious "you have new mail".
 # Hmm, doesn't seem to prevent the message :(
 unset MAILCHECK
+
+# Colourise the terminal.
+export CLICOLOR=1
