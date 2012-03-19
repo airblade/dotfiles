@@ -1,8 +1,8 @@
-# Adding /usr/local/(s)bin and MySQL at start of path
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
+# Prepend ~/bin to pick up my functions
+export PATH=~/bin:$PATH
 
-# Adding ~/bin to pick up my functions
-export PATH=$PATH:~/bin
+# Append /usr/local/(s)bin and MySQL
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
