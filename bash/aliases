@@ -1,9 +1,6 @@
 # Meta
 alias ea='vim ~/dotfiles/bash/aliases'
 
-# The one true text editor
-alias v='vim'
-
 # Git
 alias g='git'
 alias gs='git status -s'
