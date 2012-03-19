@@ -9,7 +9,7 @@ alias vacuum_mail='sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
 
 
 # env
-export EDITOR='/Users/andy/bin/vim --nomru'
+export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Set up colours for ls.
 # The lscolors.sh file was generated on my Rails Machine by running:
