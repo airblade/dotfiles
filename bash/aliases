@@ -35,3 +35,7 @@ alias .....='cd ../../../..'
 # Processes
 alias topm='top -o vsize' # memory
 alias topc='top -o cpu'   # cpu
+
+# History
+# Read new (global) history lines into current history list.
+alias hh='history -n'

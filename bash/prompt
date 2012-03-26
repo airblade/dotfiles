@@ -1,12 +1,7 @@
 # Keep command history from all tabs/windows.
-# http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows
-
-# append (not overwrite) history list to history file when shell exits
-#shopt -s histappend
-# -a   append local history to global
-# -c   clear local history
-# -r   reload from global history
-#export PROMPT_COMMAND='history -a; history -c; history -r'
+# - http://briancarper.net/blog/248
+# - http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows
+shopt -s histappend
 
 
 # Prompt.  Looks like:
@@ -55,4 +50,4 @@ function build_prompt {
   fi
 }
 
-PROMPT_COMMAND=build_prompt
+PROMPT_COMMAND="build_prompt; history -a"
