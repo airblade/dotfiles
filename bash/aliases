@@ -22,7 +22,6 @@ alias r='script/rails'
 alias rst='touch tmp/restart.txt'
 
 # Directories
-alias less='less -r'
 alias lls='ls -l'
 alias lsdot='ls -lAd .*'
 
