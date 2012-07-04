@@ -20,6 +20,7 @@
 	ri = !sh -c 'git rebase -i HEAD~"$1"' -
   # Expand an abbreviated SHA to a full 40 character one.
 	expand = rev-parse --verify
+	ctags = !.git/hooks/ctags
 
 [apply]
 	whitespace = nowarn
@@ -49,3 +50,6 @@
 	cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
 [help]
 	browser = gitscm
+
+[init]
+	templatedir = ~/.git_template
