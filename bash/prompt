@@ -34,19 +34,18 @@ GIT_PS1_SHOWSTASHSTATE=1
 # (%) untracked files
 GIT_PS1_SHOWUNTRACKEDFILES=1
 
-ruby_version='rbenv version-name'
 git_head='git rev-parse --short HEAD 2>/dev/null'
 
 function build_prompt {
   last="$?"
   if [ `uname` = "Darwin" ]; then
     if [ "$last" -eq 0 ]; then
-      PS1="\n$GREEN\w/  $CYAN\$($ruby_version) $YELLOW\$(__git_ps1)  $BLUE\$($git_head)\n$GREEN$ $WHITE"
+      PS1="\n$GREEN\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$GREEN$ $WHITE"
     else
-      PS1="\n$GREEN\w/  $CYAN\$($ruby_version) $YELLOW\$(__git_ps1)  $BLUE\$($git_head)\n$RED$ $WHITE"
+      PS1="\n$GREEN\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$RED$ $WHITE"
     fi
   else
-    export PS1="\n$RED\w/  \$($ruby_version) \$(__git_ps1)\n$ $WHITE"
+    export PS1="\n$RED\w/  \$(__git_ps1)\n$ $WHITE"
   fi
 }
 
