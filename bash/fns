@@ -41,3 +41,8 @@ function pless {
 function gh-get () {
   curl -#O $(echo $1 | sed 's|blob/||' | sed 's|github.com|raw.github.com|')
 }
+
+# https://github.com/fiorix/freegeoip#readme
+function geoip {
+  curl http://freegeoip.net/json/$1
+}
