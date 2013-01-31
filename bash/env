@@ -17,5 +17,6 @@ export CLICOLOR=1
 
 # less
 # -F  exit when less than one screen of output
-# -r  display colours
-export LESS='-F -r'
+# -R  display colours
+# +F  go to end of file and wait for more data
+export LESS='-F -R'
