@@ -6,6 +6,7 @@ alias g='git'
 alias gs='git status -s'
 alias gd='git diff'
 alias gl='git l -10'
+alias glb='git l HEAD ^master'
 
 # rbenv
 alias rr='rbenv rehash'
