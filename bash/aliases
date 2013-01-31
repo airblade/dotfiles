@@ -17,7 +17,7 @@ alias bert='bundle exec rake test'
 alias besc='bundle exec script/cucumber'
 
 # Rails
-alias r='script/rails'
+alias log='less +F log/development.log'
 
 # Passenger / Pow
 alias rst='touch tmp/restart.txt'
