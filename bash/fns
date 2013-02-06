@@ -46,3 +46,12 @@ function gh-get () {
 function geoip {
   curl http://freegeoip.net/json/$1
 }
+
+# Crypto
+# http://tombuntu.com/index.php/2007/12/12/simple-file-encryption-with-openssl/
+function encrypt {
+  openssl aes-256-cbc -salt -in "$@" -out "$@".enc
+}
+function decrypt {
+  openssl aes-256-cbc -d -salt -in "$@" -out "$@".original
+}
