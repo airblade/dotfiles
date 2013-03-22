@@ -17,6 +17,7 @@
 	undo = reset --soft HEAD^
 	unstage = reset HEAD
 	discard = checkout --
+	fixup = commit --amend -C HEAD
 	ri = !sh -c 'git rebase -i HEAD~"$1"' -
   # Expand an abbreviated SHA to a full 40 character one.
 	expand = rev-parse --verify
