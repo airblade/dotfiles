@@ -55,3 +55,11 @@ function encrypt {
 function decrypt {
   openssl aes-256-cbc -d -salt -in "$@" -out "$@".original
 }
+
+# Copy Last Commit's SHA.
+# The process substitution lets me send the output of cut to both
+# pbcopy and standard out (the console in this case).
+function clc {
+  # git rev-parse --verify HEAD | cut -c1-7 | tr -d "\n" | tee >(pbcopy)
+  git rev-parse --verify HEAD | cut -c1-7 | tr -d "\n" | pbcopy
+}
