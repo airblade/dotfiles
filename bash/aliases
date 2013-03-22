@@ -42,3 +42,6 @@ alias hh='history -n'
 
 # Miscellaneous
 alias ship='git push && bundle exec cap deploy'
+
+# Ag
+alias ag='ag --smart-case'
