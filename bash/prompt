@@ -14,7 +14,7 @@ shopt -s histappend
 #   /path/to/current/directory/  (branch_name)
 #   $ 
 #
-# __git_ps1 is set up by the git-completion.bash script bundled
+# __git_ps1 is set up by the git-prompt.sh script bundled
 # with the Git source.
 #
 # Full list of colour codes here:
@@ -33,6 +33,8 @@ GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 # (%) untracked files
 GIT_PS1_SHOWUNTRACKEDFILES=1
+
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 git_head='git rev-parse --short HEAD 2>/dev/null'
 
