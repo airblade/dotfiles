@@ -42,9 +42,9 @@ function build_prompt {
   last="$?"
   if [ `uname` = "Darwin" ]; then
     if [ "$last" -eq 0 ]; then
-      PS1="\n$GREEN\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$GREEN$ $WHITE"
+      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$GREEN$ $WHITE"
     else
-      PS1="\n$GREEN\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$RED$ $WHITE"
+      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$RED$ $WHITE"
     fi
   else
     export PS1="\n$RED\w/  \$(__git_ps1)\n$ $WHITE"
