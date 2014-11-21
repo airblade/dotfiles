@@ -19,7 +19,7 @@ export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 # The dircolors command does not appear to be available on OS X.
 #
 # TODO: cf http://github.com/rtomayko/dotfiles/blob/rtomayko/.bashrc#L238-247
-source ~/.dircolors/lscolors.sh
+#source ~/.dircolors/lscolors.sh
 
 
 # fns
