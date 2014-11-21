@@ -9,7 +9,7 @@ IRB.conf[:SAVE_HISTORY] = 500
 IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb_history')
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
-%w[ rubygems awesome_print interactive_editor ].each do |gem|
+%w[ rubygems interactive_editor ].each do |gem|
   begin
     require gem
   rescue LoadError
@@ -18,12 +18,11 @@ IRB.conf[:PROMPT_MODE]  = :SIMPLE
 end
 
 # Use awesome_print as the default formatter.
-if defined? AwesomePrint
-  IRB::Irb.class_eval do
-    def output_value
-      ap @context.last_value
-    end
-  end
+begin
+  require 'awesome_print'
+  AwesomePrint.irb!
+rescue LoadError
+  puts 'awesome_print unavailable :('
 end
 
 class Object
@@ -43,14 +42,17 @@ class Object
 
 end
 
-# http://github.com/rtomayko/dotfiles/blob/rtomayko/.irbrc
-# reload this .irbrc
-def IRB.reload
-  load __FILE__
+# http://ozmm.org/posts/railsrc.html
+if defined?(Rails) && Rails.env
+  load File.dirname(__FILE__) + '/.railsrc-irb'
 end
 
-# http://ozmm.org/posts/railsrc.html
-#load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
-if defined?(Rails) && Rails.env
-  load File.dirname(__FILE__) + '/.railsrc'
+class Object
+  def interesting_methods
+    case self.class
+    when Class;  self.public_methods.sort - Object.public_methods
+    when Module; self.public_methods.sort - Module.public_methods
+    else         self.public_methods.sort - Object.new.public_methods
+    end
+  end
 end
