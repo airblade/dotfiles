@@ -17,18 +17,30 @@ shopt -s histappend
 # __git_ps1 is set up by the git-prompt.sh script bundled
 # with the Git source.
 #
-# Colours:
-# http://unix.stackexchange.com/a/124409/88207
 #
-# Format: \[<ESC>[COLOURCODEm\] where <ESC> is \033
+# COLOURS
 #
-# For 256 colours, colour codes start 38;5; (foreground) and 48;5; (background).
+# Format: \[<sequence>\]
+#
+# 16-colour sequence: ESC[<code>m where <ESC> is \033
+#
+# 256-colour sequence: ESC[38;5;<fgcode>m and ESC<48;5;<bgcode>m
+# 
+# 256-colour codes are:
+#
+# 0x00-0x07: standard colors (as in ESC [ 30..37 m)
+# 0x08-0x0F: high intensity colors (as in ESC [ 90..97 m)
+# 0x10-0xE7: 6*6*6=216 colors: 16 + 36*r + 6*g + b (0≤r,g,b≤5)
+# 0xE8-0xFF: grayscale from black to white in 24 steps
+#
+# See http://unix.stackexchange.com/a/124409/88207
+#
  GREEN="\[\033[32m\]"
  RESET="\[\033[0m\]"
    RED="\[\033[31m\]"
 YELLOW="\[\033[33m\]"
-  CYAN="\[\033[36m\]"
-  BLUE="\[\033[34m\]"
+  CYAN="\[\033[38;5;103m\]"
+  BLUE="\[\033[38;5;4m\]"
 
 # (*) unstaged changes
 # (+) staged changes
