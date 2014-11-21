@@ -24,7 +24,7 @@ shopt -s histappend
 #
 # For 256 colours, colour codes start 38;5; (foreground) and 48;5; (background).
  GREEN="\[\033[32m\]"
- WHITE="\[\033[0m\]"
+ RESET="\[\033[0m\]"
    RED="\[\033[31m\]"
 YELLOW="\[\033[33m\]"
   CYAN="\[\033[36m\]"
@@ -46,12 +46,12 @@ function build_prompt {
   last="$?"
   if [ `uname` = "Darwin" ]; then
     if [ "$last" -eq 0 ]; then
-      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$GREEN$ $WHITE"
+      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$GREEN$ $RESET"
     else
-      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$RED$ $WHITE"
+      PS1="\n$BLUE\w/  $CYAN\$(__git_ps1)   $BLUE\$($git_head)\n$RED$ $RESET"
     fi
   else
-    export PS1="\n$RED\w/  \$(__git_ps1)\n$ $WHITE"
+    export PS1="\n$RED\w/  \$(__git_ps1)\n$ $RESET"
   fi
 }
 
