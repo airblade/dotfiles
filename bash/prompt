@@ -17,14 +17,18 @@ shopt -s histappend
 # __git_ps1 is set up by the git-prompt.sh script bundled
 # with the Git source.
 #
-# Full list of colour codes here:
-# http://wiki.archlinux.org/index.php/Color_Bash_Prompt
-GREEN="\[\033[32m\]"
-WHITE="\[\033[0m\]"
-RED="\[\033[31m\]"
+# Colours:
+# http://unix.stackexchange.com/a/124409/88207
+#
+# Format: \[<ESC>[COLOURCODEm\] where <ESC> is \033
+#
+# For 256 colours, colour codes start 38;5; (foreground) and 48;5; (background).
+ GREEN="\[\033[32m\]"
+ WHITE="\[\033[0m\]"
+   RED="\[\033[31m\]"
 YELLOW="\[\033[33m\]"
-CYAN="\[\033[36m\]"
-BLUE="\[\033[34m\]"
+  CYAN="\[\033[36m\]"
+  BLUE="\[\033[34m\]"
 
 # (*) unstaged changes
 # (+) staged changes
