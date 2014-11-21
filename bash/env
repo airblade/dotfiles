@@ -23,5 +23,7 @@ export CLICOLOR=1
 # less
 # -F  exit when less than one screen of output
 # -R  display colours
+# -X  don't send terminal de(initialisation) strings;
+#     prevents output being swallowed when exiting for -F.
 # +F  go to end of file and wait for more data
-export LESS='-F -R'
+export LESS='FRX'
