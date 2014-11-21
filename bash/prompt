@@ -9,9 +9,9 @@ shopt -s histappend
 #   /path/to/current/directory/
 #   $ 
 #
-# If we are in a Git repo the current branch is shown like this:
+# If we are in a Git repo the current branch and HEAD are shown like this:
 #
-#   /path/to/current/directory/  (branch_name)
+#   /path/to/current/directory/  (branch_name)  abcd1234
 #   $ 
 #
 # __git_ps1 is set up by the git-prompt.sh script bundled
