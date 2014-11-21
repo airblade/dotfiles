@@ -12,6 +12,7 @@ alias glb='git l HEAD ^master'
 alias rr='rbenv rehash'
 
 # Bundler
+alias b='bundle'
 alias be='bundle exec'
 alias bert='bundle exec rake test'
 alias besc='bundle exec script/cucumber'
@@ -41,7 +42,11 @@ alias topc='top -o cpu'   # cpu
 alias hh='history -n'
 
 # Miscellaneous
-alias ship='git push && bundle exec cap deploy'
+alias ship='git push && cap production deploy'
 
 # Ag
 alias ag='ag --smart-case'
+
+# OS X
+alias nd='open "/System/Library/CoreServices/Network Diagnostics.app"'
+
