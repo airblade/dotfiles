@@ -9,7 +9,6 @@
 [alias]
 	co = checkout
 	ci = commit
-	caa = commit -a --amend -C HEAD
 	st = status
 	br = branch
 	l = log --abbrev-commit --graph --date=relative
