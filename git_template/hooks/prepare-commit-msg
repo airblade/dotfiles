@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Adds reference to GitHub issue if available in branch name.
+# The issue number should be at the end of the branch name, following
+# a hyphen.
+
+# Only proceed if no second parameter is given to the script.
+if [ x = x${2} ]; then
+  branch=$(git symbolic-ref --short HEAD)
+  if [[ $branch =~ .*-([0-9]+)$ ]]; then
+    issue_number=${BASH_REMATCH[1]}
+    # sed on osx doesn't treat \n in replacement pattern as a new line.
+    # If it did we could do this:
+    #
+    # sed -i.bak -e "1s/^/\n\nSee #$issue_number./" "$1"
+    #
+    # Instead we have do lots of weird quoting.
+    sed -i.bak -e '1s/^/\'$'\n'"\\"$'\n'"See #$issue_number./" "$1"
+  fi
+fi
