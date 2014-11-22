@@ -35,9 +35,9 @@ shopt -s histappend
 #
 # See http://unix.stackexchange.com/a/124409/88207
 #
- GREEN="\[\033[32m\]"
+ GREEN="\[\033[38;5;22m\]"
  RESET="\[\033[0m\]"
-   RED="\[\033[31m\]"
+   RED="\[\033[38;5;88m\]"
 YELLOW="\[\033[33m\]"
   CYAN="\[\033[38;5;103m\]"
   BLUE="\[\033[38;5;4m\]"
