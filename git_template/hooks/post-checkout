@@ -1,3 +1,19 @@
 #!/bin/sh
+
+# generate ctags
 .git/hooks/ctags >/dev/null 2>&1 &
+
+# check whether we branched off a non-master branch
+ref_of_previous_head="$1"
+ref_of_new_head="$2"
+changed_branches=$3
+
+if (( $changed_branches == 1 )); then
+  if [ $ref_of_previous_head == $ref_of_new_head ]; then
+    if ! git branch --contains $ref_of_previous_head | grep -q master; then
+      echo "You checked out a branch off a branch-that-wasn't-master."
+      echo "If you ran 'git checkout -b shiny' did you mean 'git checkout -b shiny master'?"
+    fi
+  fi
+fi
 
