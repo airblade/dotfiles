@@ -13,6 +13,8 @@ alias rr='rbenv rehash'
 
 # Bundler
 alias b='bundle'
+complete -F _bundler b
+
 alias be='bundle exec'
 alias bert='bundle exec rake test'
 alias besc='bundle exec script/cucumber'

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+#
+# Bash completion for bundler.
+#
+# For now this just completes subcommands and gem names.
+# In due course I'd like to complete flags too.
+#
+# See https://github.com/kpumuk/dotfiles/blob/master/bash/bash_completion.d/bundler
+
+
+_get_subcommand() {
+  local i
+  # Loop over words ignoring initial command and word being completed.
+  for ((i=1; i < $COMP_CWORD; i++)); do
+    local word="${COMP_WORDS[$i]}"
+    case $word in
+      [^-]*)
+        subcommand=$word
+        return
+        ;;
+      *)
+        ;;
+    esac
+  done
+}
+
+
+_bundler() {
+  COMPREPLY=()
+
+  local command=$1
+  local word="$2"
+
+  # If we are on the first argument
+  if [ "$COMP_CWORD" -eq 1 ]; then
+    # TODO: generate this list programatically:
+    #       - picks up any bundle-custom commands defined
+    #       - future-proof
+    #
+    # subcommands copied manually from `bundle -h`.
+    local subcommands=(install update package exec config help check list show outdated console open lock viz init gem platform clean)
+    COMPREPLY=( $(compgen -W "${subcommands[*]}" -- "$word") )
+  else
+    local gem subcommand
+    local commands=(binstubs open show update)
+    # custom subcommand
+    commands+=(vv)
+
+    _get_subcommand
+
+    for item in "${commands[@]}"; do
+      if [ $subcommand == "$item" ]; then
+        local gems=$( grep -e '^\s*gem' Gemfile | awk '{print $2}' | tr -d "'," )
+        COMPREPLY=( $(compgen -W "${gems}" -- "$word") )
+      fi
+    done
+  fi
+}
+
+
+complete -F _bundler bundle
