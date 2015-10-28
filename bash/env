@@ -1,5 +1,4 @@
-# Prepend ~/bin and /usr/local/(s)bin to pick up my functions
-export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -9,6 +8,9 @@ eval "$(rbenv init -)"
 # https://github.com/sstephenson/rbenv/issues/309
 # https://twitter.com/tpope/status/165631968996900865
 export PATH=".git/safe/../../bin:$PATH"
+
+# Use full path; ~/bin breaks git's subcommand lookup for subcommands in ~/bin.
+export PATH="/Users/andy/bin:$PATH"
 
 # Append MySQL
 # export PATH="$PATH:/usr/local/mysql/bin"
