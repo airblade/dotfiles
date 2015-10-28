@@ -11,6 +11,9 @@ alias glb='git l HEAD ^master'
 # rbenv
 alias rr='rbenv rehash'
 
+# ruby
+alias t='bundle exec ruby -Ilib:test'
+
 # Bundler
 alias b='bundle'
 complete -F _bundler b
