@@ -12,6 +12,8 @@
 	st = status
 	br = branch -vv
 	l = log --abbrev-commit --graph --date=relative
+  # show commit message
+  cm = log -1 --pretty=full
 	# Undo your last commit, but don't throw away your changes
 	undo = reset --soft HEAD^
 	unstage = reset HEAD
