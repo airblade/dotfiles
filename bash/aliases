@@ -55,3 +55,6 @@ alias ag='ag --smart-case'
 # OS X
 alias nd='open "/System/Library/CoreServices/Network Diagnostics.app"'
 
+# tree
+alias tree='tree -C -F'
+
