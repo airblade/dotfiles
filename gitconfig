@@ -10,7 +10,7 @@
 	co = checkout
 	ci = commit
 	st = status
-	br = branch
+	br = branch -vv
 	l = log --abbrev-commit --graph --date=relative
 	# Undo your last commit, but don't throw away your changes
 	undo = reset --soft HEAD^
