@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Git completion.
+source /usr/local/etc/bash_completion.d/git-completion.bash
+# Git completion for my `g` alias.
+complete -o default -o nospace -F _git g

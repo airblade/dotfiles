@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+SSH_COMPLETE=( $(grep 'Host ' ~/.ssh/config | cut -f2 -d' ') )
+complete -o default -W "${SSH_COMPLETE[*]}" ssh
