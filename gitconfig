@@ -47,8 +47,8 @@
     summary = true
 
 [core]
-    attributesfile = ~/.gitattributes
-    excludesfile = ~/.gitignore
+    attributesFile = ~/.gitattributes
+    excludesFile = ~/.gitignore
     pager = less -FRX
 
 [browser "gitscm"]
@@ -60,7 +60,7 @@
     helper = osxkeychain
 
 [init]
-    templatedir = ~/.git_template
+    templateDir = ~/.git_template
 
 [status]
     showUntrackedFiles = all
