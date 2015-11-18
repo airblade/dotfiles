@@ -1,66 +1,66 @@
 [user]
-	name = Andy Stewart
-	email = boss@airbladesoftware.com
+    name = Andy Stewart
+    email = boss@airbladesoftware.com
 
 [github]
-	user = airblade
-	token = !security find-generic-password -gs \"GitHub API Token\" 2>&1 >/dev/null | awk '/password/ {print $2}' | tr -d \\\"
+    user = airblade
+    token = !security find-generic-password -gs \"GitHub API Token\" 2>&1 >/dev/null | awk '/password/ {print $2}' | tr -d \\\"
 
 [alias]
-	co = checkout
-	ci = commit
-	st = status
-	br = branch -vv
-	l = log --abbrev-commit --graph --date=relative
-  # show commit message
-  cm = log -1 --pretty=full
-	# Undo your last commit, but don't throw away your changes
-	undo = reset --soft HEAD^
-	unstage = reset HEAD
-	discard = checkout --
-	fixup = commit --amend -C HEAD
-	ri = !sh -c 'git rebase -i HEAD~"$1"' -
-  # Expand an abbreviated SHA to a full 40 character one.
-	expand = rev-parse --verify
-	ctags = !.git/hooks/ctags
+    co = checkout
+    ci = commit
+    st = status
+    br = branch -vv
+    l = log --abbrev-commit --graph --date=relative
+    # show commit message
+    cm = log -1 --pretty=full
+    # Undo your last commit, but don't throw away your changes
+    undo = reset --soft HEAD^
+    unstage = reset HEAD
+    discard = checkout --
+    fixup = commit --amend -C HEAD
+    ri = !sh -c 'git rebase -i HEAD~"$1"' -
+    # Expand an abbreviated SHA to a full 40 character one.
+    expand = rev-parse --verify
+    ctags = !.git/hooks/ctags
 
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
 
 [format]
-	pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ar %C(cyan)%an
+    pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ar %C(cyan)%an
 
 [color]
-	status = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	ui = true
+    status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    ui = true
 
 [gc]
-	auto = 1
+    auto = 1
 
 [push]
-	default = tracking
+    default = tracking
 
 [merge]
-	summary = true
+    summary = true
 
 [core]
-	attributesfile = ~/.gitattributes
-	excludesfile = ~/.gitignore
-  pager = less -FRX
+    attributesfile = ~/.gitattributes
+    excludesfile = ~/.gitignore
+    pager = less -FRX
 
 [browser "gitscm"]
-	cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
+    cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
 [help]
-	browser = gitscm
+    browser = gitscm
 
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
 
 [status]
-  showUntrackedFiles = all
+    showUntrackedFiles = all
