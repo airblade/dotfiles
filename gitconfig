@@ -61,3 +61,6 @@
 
 [init]
 	templatedir = ~/.git_template
+
+[status]
+  showUntrackedFiles = all
