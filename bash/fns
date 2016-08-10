@@ -3,6 +3,10 @@ function lh {
   ls -lt "$@" | head -10;
 }
 
+function mkdircd {
+  mkdir "$@" && cd "$_";
+}
+
 # Grep directory listing.
 function lg {
   ls -la | grep -e "$@";
