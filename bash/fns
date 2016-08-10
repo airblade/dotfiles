@@ -12,6 +12,16 @@ function lg {
   ls -la | grep -e "$@";
 }
 
+# Search javascripts in the Rails app.
+function agj {
+  ag "$@" app/assets/javascripts/ lib/assets/javascripts/ vendor/assets/javascripts/
+}
+
+# Search stylesheets in the Rails app.
+function ags {
+  ag "$@" app/assets/stylesheets/ lib/assets/stylesheets/ vendor/assets/stylesheets/
+}
+
 # ghc (GitHub clone)
 # http://openmonkey.com/articles/2009/07/fast-github-clone-bash-function
 function ghc {
