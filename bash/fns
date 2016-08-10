@@ -38,10 +38,21 @@ function ghc {
 # Commit pending changes quoting args as message.
 # e.g.: gc Fix ICBM launch bug.
 function gc {
-  git commit -m "$*"
+  if [ -n "$*" ]; then
+    git commit -m "$*"
+  else
+    git commit
+  fi
 }
 function gca {
-  git commit -am "$*"
+  if [ -n "$*" ]; then
+    git commit -am "$*"
+  else
+    git commit -a
+  fi
+}
+function gaf {
+  git diff --name-only | selecta | xargs git add
 }
 
 # http://gist.github.com/23914
