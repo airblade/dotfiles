@@ -1,7 +1,12 @@
 # Vi keybindings for everything that uses readline.
 set editing-mode vi
 
+# and insert mode (unconfirmed)
+set keymap vi-insert
+
 set completion-ignore-case On
+set completion-map-case On
+set show-all-if-ambiguous On
 
 # Key mappings.
 "§": '#'
