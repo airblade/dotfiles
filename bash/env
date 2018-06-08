@@ -12,6 +12,8 @@ export PATH=".git/safe/../../bin:$PATH"
 # Use full path; ~/bin breaks git's subcommand lookup for subcommands in ~/bin.
 export PATH="/Users/andy/bin:$PATH"
 
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+
 # Append MySQL
 # export PATH="$PATH:/usr/local/mysql/bin"
 
