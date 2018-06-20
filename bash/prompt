@@ -2,7 +2,9 @@
 # - http://briancarper.net/blog/248
 # - http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows
 shopt -s histappend
+shopt -s cmdhist
 
+export HISTCONTROL=ignoredups
 
 # Prompt.  Looks like:
 #
