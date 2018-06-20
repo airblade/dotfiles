@@ -1,9 +1,12 @@
 # Meta
 alias ea='vim ~/dotfiles/bash/aliases'
 
+alias ctags="`brew --prefix`/bin/ctags"
+
 # Git
 alias g='git'
-alias gs='git status -s'
+alias gs='git stager'
+alias gss='git status -s'
 alias gd='git diff'
 alias gl='git l -10'
 alias glb='git l HEAD ^master'
@@ -33,6 +36,7 @@ alias lls='ls -l'
 alias lsdot='ls -lAd .*'
 
 # Changing directory
+alias -- -='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -47,7 +51,7 @@ alias topc='top -o cpu'   # cpu
 alias hh='history -n'
 
 # Miscellaneous
-alias ship='git push && cap production deploy'
+alias ship='git push && bundle exec cap production deploy:migrations'
 
 # OS X
 alias nd='open "/System/Library/CoreServices/Network Diagnostics.app"'
