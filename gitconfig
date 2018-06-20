@@ -12,23 +12,26 @@
     st = status
     br = branch -vv
     l = log --abbrev-commit --graph --date=relative
+    ld = log --abbrev-commit --graph --date=short
+    ll = log --numstat
     # show commit message
-    cm = log -1 --pretty=full
+    cm = log -1 --pretty=fuller
     # Undo your last commit, but don't throw away your changes
     undo = reset --soft HEAD^
-    unstage = reset HEAD
+    unstage = reset -q --
     discard = checkout --
     fixup = commit --amend -C HEAD
     ri = !sh -c 'git rebase -i HEAD~"$1"' -
     # Expand an abbreviated SHA to a full 40 character one.
     expand = rev-parse --verify
     ctags = !.git/hooks/ctags
-
+    fad = !sh -c 'git add $(git diff --name-only | fzf -m --height=10)'
+    edit-modified = "!f() { git ls-files --modified | cut -f2 | sort -u ; }; vim - $(f)"
 [apply]
     whitespace = nowarn
 
 [format]
-    pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ar %C(cyan)%an
+    pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ad %C(cyan)%an
 
 [color]
     status = auto
@@ -50,6 +53,7 @@
     attributesFile = ~/.gitattributes
     excludesFile = ~/.gitignore
     pager = less -FRX
+    untrackedCache= true
 
 [browser "gitscm"]
     cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
@@ -64,3 +68,6 @@
 
 [status]
     showUntrackedFiles = all
+[diff]
+	mnemonicPrefix = true
+  colorMoved = zebra
