@@ -46,9 +46,9 @@ function gc {
 }
 function gca {
   if [ -n "$*" ]; then
-    git commit -am "$*"
+    git add -A && git commit -m "$*"
   else
-    git commit -a
+    git add -A && git commit
   fi
 }
 function gaf {
@@ -96,12 +96,17 @@ function sumcol {
 
 # file - open in mvim
 function f {
-  cd ${1:-.} && mvim $(find * -type f -maxdepth 4 | sort | selecta)
+  # cd ${1:-.} && mvim $(find * -type f -maxdepth 4 | sort | selecta)
+  cd ${1:-.} && mvim $(find * -type f -maxdepth 4 | selecta)
 }
 # directory - change to
 # ignore hidden directories
 function d {
   cd ${1:-.} && cd $(find * -type d -not -path '*/\.*' -maxdepth 4 | sort | selecta)
+}
+
+function proj {
+  cd $(find ~/code/src ~/business -maxdepth 3 -type d | selecta)
 }
 
 # open most recent rails migration
@@ -115,6 +120,15 @@ function r() {
     bin/rails "$@"
   else
     bin/rake "$@"
+  fi
+}
+
+# https://github.com/Z1MM32M4N/vim-superman
+vman() {
+  vim -c "SuperMan $*"
+
+  if [ "$?" != "0" ]; then
+    echo "No manual entry for $*"
   fi
 }
 
