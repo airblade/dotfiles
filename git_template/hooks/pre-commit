@@ -1,19 +1,52 @@
-#!/bin/sh
-#
-# Hook that rejects files containing words in blacklist.
+#!/usr/bin/env bash
 
-BLACKLIST="puts\|debugger\|binding.pry\|console"
- 
-if git rev-parse --verify HEAD >/dev/null 2>&1; then
-    against=HEAD
+#
+# Pre-commit hook for git.
+#
+
+
+# only run when on a branch (to avoid rebase confusion)
+#
+# NOTE: copy-pasted; not sure if necessary
+git symbolic-ref --short -q HEAD > /dev/null || exit 0
+
+# derive basis for diff
+if git-rev-parse --verify HEAD &> /dev/null; then
+	against=HEAD
 else
-    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+	# initial commit: diff against an empty tree object
+	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 fi
- 
-for FILE in `git diff-tree --no-commit-id --name-only -r $against` ; do
-    if grep -wq $BLACKLIST $FILE; then
-      echo "$FILE contains one or more blacklisted words ($BLACKLIST)."
-      echo "You can skip this check with --no-verify."
-      exit 1
-    fi
-done
+
+error=0
+
+# Loop over (A)dded (C)opied or (M)odified text files and output all
+# files with syntax errors, not just the first.
+#
+# Use named pipe (process substitution) to feed list to while loop
+# so we can change the value of `error` inside the loop and see it
+# outside the loop.
+while read -r file; do
+
+  # http://unix.stackexchange.com/a/84980/88207
+  tmpdir=$(mktemp -d 2>/dev/null || mktemp -d -t 'sinter')
+  tmpfile="$tmpdir/$(basename "$file")"
+
+  git show ":$file" > "$tmpfile"
+
+  sinter -q "$tmpfile"
+  if [ $? -eq 1 ]; then
+    error=1
+    echo syntax error in "$file"
+  fi
+
+  rm "$tmpfile"
+
+done < <(
+  git diff-index --cached --name-only --diff-filter=ACM $against -z |
+  xargs -0 file --mime |
+  awk -F":[ ]*" '$2 ~ /^text/ {print $1}'
+)
+
+exit $error
+
