@@ -10,6 +10,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 for file in *; do
+  # TODO: skip this install.sh file too
   if [ $file = "README.md" ]; then
     continue
   fi
