@@ -15,6 +15,7 @@ handle() {
   filename="${source##*/}"
 
   if [ "$filename" == "dotfiles" ]; then return; fi
+  if [ -z "$filename" ]; then return; fi
 
   target="$HOME/$filename"
 
@@ -28,7 +29,10 @@ handle() {
       read -u 3 -r -n 1 -p "overwrite $target (y/n)? " answer
       case "$answer" in
         y|Y)
-          ln -Ffs "$source" "$target" && echo link: "$source" → "$target"
+          # I can't get -nF to remove target when it is a directory.
+          # So manually remove instead.
+          rm -r "$target"
+          ln -s "$source" "$target" && echo link: "$source" → "$target"
           ;;
         *)
           echo skip: "$source" → "$target"
