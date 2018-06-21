@@ -26,7 +26,7 @@ handle() {
       echo skip: "$source" → "$target"
     else
       read -u 3 -r -n 1 -p "overwrite $target (y/n)? " answer
-      case "${answer:0:1}" in
+      case "$answer" in
         y|Y)
           ln -Ffs "$source" "$target" && echo link: "$source" → "$target"
           ;;
