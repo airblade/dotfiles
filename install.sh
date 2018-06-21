@@ -14,7 +14,7 @@ handle() {
   source="$1"
   filename="${source##*/}"
 
-  if [[ $filename == "dotfiles" ]]; then return; fi
+  if [ "$filename" == "dotfiles" ]; then return; fi
 
   target="$HOME/$filename"
 
