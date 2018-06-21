@@ -9,18 +9,12 @@ set -eo pipefail
 # Directory in which this script is located.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Loop over files and directories in dotfiles directory.
-#
-# This approach handles spaces etc in filenames (which shouldn't really be necessary here).
-#
-# Note in order to read input from user inside the loop, we redirect stdin to file
-# descriptor 3.  Otherwise the input would be consumed from the list of filenames.
-while IFS=  read -r -d $'\0'; do
 
-  source="$REPLY"
+handle() {
+  source="$1"
   filename="${source##*/}"
 
-  if [[ $filename == "dotfiles" ]]; then continue; fi
+  if [[ $filename == "dotfiles" ]]; then return; fi
 
   target="$HOME/$filename"
 
@@ -44,13 +38,23 @@ while IFS=  read -r -d $'\0'; do
   else
     ln -s "$source" "$target" && echo link: "$source" → "$target"
   fi
+}
 
+
+# Loop over files and directories in dotfiles directory.
+#
+# This approach handles spaces etc in filenames (which shouldn't really be necessary here).
+#
+# Note in order to read input from user inside the loop, we redirect stdin to file
+# descriptor 3.  Otherwise the input would be consumed from the list of filenames.
+while IFS=  read -r -d $'\0'; do
+  handle "$REPLY"
 done 3<&0 < <(find "$DIR" -maxdepth 1 \
-         -not -name .DS_Store    \
-         -not -name .git         \
-         -not -name bash         \
-         -not -name README.md    \
-         -not -name install.sh   \
-         -print0                 \
-        )
+              -not -name .DS_Store    \
+              -not -name .git         \
+              -not -name bash         \
+              -not -name README.md    \
+              -not -name install.sh   \
+              -print0                 \
+             )
 
