@@ -26,16 +26,16 @@ handle() {
     if [ "$(readlink "$target")" = "$source" ]; then
       echo skip: "$source" → "$target"
     else
-      read -u 3 -r -n 1 -p "overwrite $target (y/n)? " answer
+      read -r -n 1 -p "overwrite $target (y/n)? " answer
+      echo
       case "$answer" in
         y|Y)
           # I can't get -nF to remove target when it is a directory.
           # So manually remove instead.
-          rm -r "$target"
-          ln -s "$source" "$target" && echo link: "$source" → "$target"
+          rm -r "$target" && ln -s "$source" "$target" && echo link: "$source" → "$target"
           ;;
         *)
-          echo skip: "$source" → "$target"
+          echo skip: "$source"
           ;;
       esac
     fi
@@ -45,20 +45,14 @@ handle() {
 }
 
 
-# Loop over files and directories in dotfiles directory.
-#
-# This approach handles spaces etc in filenames (which shouldn't really be necessary here).
-#
-# Note in order to read input from user inside the loop, we redirect stdin to file
-# descriptor 3.  Otherwise the input would be consumed from the list of filenames.
-while IFS=  read -r -d $'\0'; do
-  handle "$REPLY"
-done 3<&0 < <(find "$DIR" -maxdepth 1 \
-              -not -name .DS_Store    \
-              -not -name .git         \
-              -not -name bash         \
-              -not -name README.md    \
-              -not -name install.sh   \
-              -print0                 \
-             )
+# Instead of listing filenames and then reading the list,
+# just execute something for each file.
+export -f handle
+find "$DIR" -maxdepth 1             \
+            -not -name .DS_Store    \
+            -not -name .git         \
+            -not -name bash         \
+            -not -name README.md    \
+            -not -name install.sh   \
+            -exec bash -c 'handle "$0"' {} \;
 
