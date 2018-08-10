@@ -27,6 +27,7 @@
     ctags = !.git/hooks/ctags
     fad = !sh -c 'git add $(git diff --name-only | fzf -m --height=10)'
     edit-modified = "!f() { git ls-files --modified | cut -f2 | sort -u ; }; vim - $(f)"
+    outstanding = !git --no-pager diff -U0 master | grep \"^+.*\\(TODO\\|FIXME\\)\" | sed \"s/^+//\" | git --no-pager grep -nFf -
 [apply]
     whitespace = nowarn
 
