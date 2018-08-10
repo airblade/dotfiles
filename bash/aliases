@@ -50,9 +50,6 @@ alias topc='top -o cpu'   # cpu
 # Read new (global) history lines into current history list.
 alias hh='history -n'
 
-# Miscellaneous
-alias ship='git push && bundle exec cap production deploy:migrations'
-
 # OS X
 alias nd='open "/System/Library/CoreServices/Network Diagnostics.app"'
 
