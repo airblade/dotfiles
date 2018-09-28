@@ -12,5 +12,5 @@ fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g""'
+export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
 
