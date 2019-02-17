@@ -82,3 +82,26 @@ function checkBluetoothBatteries()
 end
 batteryTimer = hs.timer.doEvery(300, checkBluetoothBatteries)
 
+
+--
+-- Show sunrise and sunset times in menubar.
+--
+sun = hs.menubar.new()
+sun:setTitle('☀ ')
+sun:setTooltip("Sunrise and sunset")
+function calculateSunriseSunset()
+  lat = 51.7
+  long = -1.24
+  utc_offset = 0
+  format = "%H:%M"
+  sunrise = os.date(format, hs.location.sunrise(lat, long, utc_offset))
+  sunset  = os.date(format, hs.location.sunset(lat, long, utc_offset))
+
+  sun:setMenu({
+    {title = "Sunrise "..sunrise},
+    {title = "Sunset  "..sunset},
+  })
+end
+calculateSunriseSunset()
+-- capture timer to prevent it being garbage collected
+sunTimer = hs.timer.doAt("12:00", "3h", calculateSunriseSunset)
