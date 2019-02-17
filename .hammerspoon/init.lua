@@ -53,6 +53,14 @@ hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
   hs.window.focusedWindow():centerOnScreen()
 end)
 
+hs.hotkey.bind({"ctrl", "cmd"}, "f", function()
+  hs.window.focusedWindow():toggleFullScreen()
+end)
+
+hs.hotkey.bind({"ctrl", "cmd"}, "m", function()
+  hs.window.focusedWindow():moveToUnit(hs.layout.maximized)
+end)
+
 
 
 --
