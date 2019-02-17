@@ -80,6 +80,7 @@ function checkBluetoothBatteries()
     end
   end
 end
+-- capture timer to prevent it being garbage collected
 batteryTimer = hs.timer.doEvery(300, checkBluetoothBatteries)
 
 
