@@ -35,18 +35,24 @@ function ghc {
   fi
 }
 
-# Commit pending changes quoting args as message.
+# Commit pending changes with args as message.
 # e.g.: gc Fix ICBM launch bug.
+#
+# Ignore a trailing full stop.
 function gc {
   if [ -n "$*" ]; then
-    git commit -m "$*"
+    msg="$*"
+    [ "${msg: -1:1}" == '.' ] && msg="${msg:0:-1}"
+    git commit -m "$msg"
   else
     git commit
   fi
 }
 function gca {
   if [ -n "$*" ]; then
-    git add -A && git commit -m "$*"
+    msg="$*"
+    [ "${msg: -1:1}" == '.' ] && msg="${msg:0:-1}"
+    git add -A && git commit -m "$msg"
   else
     git add -A && git commit
   fi
