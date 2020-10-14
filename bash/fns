@@ -3,23 +3,8 @@ function lh {
   ls -lt "$@" | head -10;
 }
 
-function mkdircd {
+function mcd {
   mkdir "$@" && cd "$_";
-}
-
-# Grep directory listing.
-function lg {
-  ls -la | grep -e "$@";
-}
-
-# Search javascripts in the Rails app.
-function agj {
-  ag "$@" app/assets/javascripts/ lib/assets/javascripts/ vendor/assets/javascripts/
-}
-
-# Search stylesheets in the Rails app.
-function ags {
-  ag "$@" app/assets/stylesheets/ lib/assets/stylesheets/ vendor/assets/stylesheets/
 }
 
 # ghc (GitHub clone)
@@ -57,20 +42,11 @@ function gca {
     git add -A && git commit
   fi
 }
-function gaf {
-  git diff --name-only | selecta | xargs git add
-}
 
 # http://gist.github.com/23914
 # Quickly inspect syntax-highlighted source files.
 function pless {
   pygmentize $1 | less -r
-}
-
-# https://gist.github.com/810859
-# $ gh-get https://github.com/defunkt/facebox/blob/master/src/facebox.js
-function gh-get () {
-  curl -#O $(echo $1 | sed 's|blob/||' | sed 's|github.com|raw.github.com|')
 }
 
 # https://github.com/fiorix/freegeoip#readme

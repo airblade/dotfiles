@@ -1,11 +1,14 @@
 alias cdb='cd ~/business'
-alias cdbc='cd ~/business/berwicks/website/berwicksconsultants'
 alias cdsp='cd ~/business/sparkle/moda'
+alias cdsds='cd ~/business/sparkle/digital/sds'
+alias cdsp2='cd ~/business/sparkle/sparklier/sparkle'
 alias cdda='cd ~/business/doubleagent/webapp'
 alias cdf='cd ~/code/src/factor'
 alias cdvg='cd ~/code/src/vim-gitgutter'
 alias cdv='cd ~/dotvim'
 alias cdk='cd ~/code/src/kite-vim-plugin'
+alias cdr='cd ~/code/src/ramp'
+alias cdc='cd ~/business/colloquio/webapp'
 
 alias tsl='ssh sp tail -f /var/www/apps/sparkle/shared/log/*.log'
 

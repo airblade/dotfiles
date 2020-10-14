@@ -8,6 +8,7 @@ alias g='git'
 alias gs='git stager'
 alias gss='git status -s'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gl='git l -10'
 alias glb='git l HEAD ^master'
 

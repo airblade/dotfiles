@@ -4,6 +4,12 @@ set editing-mode vi
 # and insert mode (unconfirmed)
 set keymap vi-insert
 
+# beam cursor in insert mode, block cursor in normal mode
+# https://stackoverflow.com/a/42107711/151007
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[6 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
 set completion-ignore-case On
 set completion-map-case On
 set show-all-if-ambiguous On
