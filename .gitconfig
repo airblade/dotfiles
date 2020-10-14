@@ -11,9 +11,8 @@
     ci = commit
     st = status
     br = branch -vv
-    l = log --abbrev-commit --graph --date=relative
-    ld = log --abbrev-commit --graph --date=short
-    ll = log --numstat
+    l = log --abbrev-commit --graph --date=short
+    lr = log --abbrev-commit --graph --date=relative
     # show commit message
     cm = log -1 --pretty=fuller
     # Undo your last commit, but don't throw away your changes
@@ -27,12 +26,14 @@
     ctags = !.git/hooks/ctags
     fad = !sh -c 'git add $(git diff --name-only | fzf -m --height=10)'
     edit-modified = "!f() { git ls-files --modified | cut -f2 | sort -u ; }; vim - $(f)"
-    outstanding = !git --no-pager diff -U0 master | grep \"^+.*\\(TODO\\|FIXME\\)\" | sed \"s/^+//\" | git --no-pager grep -nFf -
+    todo = !git --no-pager diff -U0 master | grep \"^+.*\\(TODO\\|FIXME\\)\" | sed \"s/^+//\" | git --no-pager grep -nFf -
+	first = rev-list --max-parents=0 HEAD
 [apply]
     whitespace = nowarn
 
 [format]
-    pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ad %C(cyan)%an
+    ; pretty = format:%C(yellow)%h%Creset%Cgreen%d%Creset %s %C(blue)%ad %C(cyan)%an
+    pretty = format:%C(green)%h%Creset %C(blue)%ad%Creset %s%C(yellow)%d
 
 [color]
     status = auto
@@ -53,7 +54,7 @@
 [core]
     attributesFile = ~/.gitattributes
     excludesFile = ~/.gitignore
-    pager = less -FRX
+    pager = diff-highlight | less -FRX
     untrackedCache= true
 
 [browser "gitscm"]
