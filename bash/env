@@ -1,5 +1,7 @@
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
+export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
+
 # Use full path; ~/bin breaks git's subcommand lookup for subcommands in ~/bin.
 export PATH="/Users/andy/bin:$PATH"
 

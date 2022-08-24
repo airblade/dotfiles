@@ -1,6 +1,5 @@
 # aliases
 alias m='mvim'
-alias vim='mvim -v'
 alias acorn='open -a Acorn'
 alias vacuum_mail='sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
 
