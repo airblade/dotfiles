@@ -1,3 +1,2 @@
---- 
-# https://github.com/rubygems/rubygems/blob/master/lib/rubygems/config_file.rb
-gem: --no-ri --no-rdoc
+---
+gem: --no-document
