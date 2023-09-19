@@ -10,27 +10,18 @@ alias gss='git status -s'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gl='git l -10'
-alias glb='git l HEAD ^master'
-
-# rbenv
-alias rr='rbenv rehash'
-
-# ruby
-alias t='bundle exec ruby -Ilib:test'
+alias glb='git l HEAD ^main'
 
 # Bundler
 alias b='bundle'
 complete -F _bundler b
 
-alias be='bundle exec'
 alias bert='bundle exec rake test'
-alias besc='bundle exec script/cucumber'
 
 # Rails
 alias log='less +F log/development.log'
-
-# Passenger / Pow
-alias rst='touch tmp/restart.txt'
+alias r='bin/rails'
+alias t='bin/rails test'
 
 # Directories
 alias lls='ls -l'
@@ -46,13 +37,6 @@ alias .....='cd ../../../..'
 # Processes
 alias topm='top -o vsize' # memory
 alias topc='top -o cpu'   # cpu
-
-# History
-# Read new (global) history lines into current history list.
-alias hh='history -n'
-
-# OS X
-alias nd='open "/System/Library/CoreServices/Network Diagnostics.app"'
 
 # tree
 alias tree='tree -C -F'

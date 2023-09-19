@@ -7,19 +7,6 @@ function mcd {
   mkdir "$@" && cd "$_";
 }
 
-# ghc (GitHub clone)
-# http://openmonkey.com/articles/2009/07/fast-github-clone-bash-function
-function ghc {
-  gh_url=${1:-`pbpaste`}
-  co_dir=${HOME}/code/src/$(echo $gh_url | sed -e 's/^git:\/\/github.com\///; s/\//-/; s/\.git$//')
-
-  if [ -d $co_dir ]; then
-    cd $co_dir && git pull origin master
-  else
-    git clone "${gh_url}" "${co_dir}" && cd "${co_dir}"
-  fi
-}
-
 # Commit pending changes with args as message.
 # e.g.: gc Fix ICBM launch bug.
 #
@@ -41,12 +28,6 @@ function gca {
   else
     git add -A && git commit
   fi
-}
-
-# http://gist.github.com/23914
-# Quickly inspect syntax-highlighted source files.
-function pless {
-  pygmentize $1 | less -r
 }
 
 # https://github.com/fiorix/freegeoip#readme
@@ -76,35 +57,12 @@ function sumcol {
   awk "{sum += \$$1}; END {print sum}"
 }
 
-# file - open in mvim
-function f {
-  # cd ${1:-.} && mvim $(find * -type f -maxdepth 4 | sort | selecta)
-  cd ${1:-.} && mvim $(find * -type f -maxdepth 4 | selecta)
-}
-# directory - change to
-# ignore hidden directories
-function d {
-  cd ${1:-.} && cd $(find * -type d -not -path '*/\.*' -maxdepth 4 | sort | selecta)
-}
-
-function proj {
-  cd $(find ~/code/src ~/business -maxdepth 3 -type d | selecta)
-}
-
 # open most recent rails migration
 function mm {
   mvim db/migrate/$(ls -1 db/migrate/ | tail -1)
 }
 
 # http://blog.55minutes.com/2012/01/invoke-rails-and-rake-faster-and-with-fewer-mistakes/
-function r() {
-  if [[ "generate|g|console|c|server|s|dbconsole|db|new|destroy" =~ $1 ]]; then
-    bin/rails "$@"
-  else
-    bin/rake "$@"
-  fi
-}
-
 # https://github.com/Z1MM32M4N/vim-superman
 vman() {
   vim -c "SuperMan $*"

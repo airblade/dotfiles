@@ -5,6 +5,9 @@ shopt -s histappend
 shopt -s cmdhist
 
 export HISTCONTROL=ignoredups
+export HISTIGNORE=?:??
+export HISTFILESIZE=99999
+export HISTSIZE=99999
 
 # Prompt.  Looks like:
 #
@@ -68,4 +71,4 @@ function build_prompt {
   fi
 }
 
-PROMPT_COMMAND="build_prompt; history -a"
+PROMPT_COMMAND="build_prompt; history -a; history -n"
