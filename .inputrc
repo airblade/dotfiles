@@ -10,35 +10,60 @@ set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[6 q\2
 set vi-cmd-mode-string \1\e[2 q\2
 
-set completion-ignore-case On
-set completion-map-case On
-set show-all-if-ambiguous On
+# https://bluz71.github.io/2023/06/02/maximize-productivity-of-the-bash-shell.html
+
+# TAB cycles forward and Shift-TAB cycles backward through completion choices.
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
+# Substring history search using UP and DOWN arrow keys.
+"\e[A": history-substring-search-backward
+"\e[B": history-substring-search-forward
+
+# Alt-e to launch $EDITOR on the current command and execute when finished editing.
+"\ee": edit-and-execute-command
+
+# Enable completion coloring.
+set colored-completion-prefix on
+set colored-stats on
+
+# Ignore case when completing.
+set completion-ignore-case on
+
+# Treat hypen and underscores as equivalent.
+set completion-map-case on
+
+# The number of completions to display without prompt; when exceeded a
+# prompt-to-display will appear.
+set completion-query-items 200
+
+# Automatically add slash to the end of symlinked directories when completing.
+set mark-symlinked-directories on
+
+# Don't automatically match files beginning with dot.
+set match-hidden-files off
+
+# Display the common prefix choices on the first completion then cycle the
+# available choices on the next completion.
+set menu-complete-display-prefix on
+
+# Turn off the completions pager.
+set page-completions off
+
+# Immediately display completion matches.
+set show-all-if-ambiguous on
+
+# Smartly complete items when the cursor is not at the end of the line.
+set skip-completed-text on
 
 # Key mappings.
 "§": '#'
 
-# A cross between <Command-r> for searching history, and up/down arrow
-# keys.
-#
-# From http://blog.peepcode.com/tutorials/2009/shell-method-missing.
-# from http://www.pixelbeat.org/settings/.inputrc
-#
-# By default up/down are bound to previous-history
-# and next-history respectively. The following does the
-# same but gives the extra functionality where if you
-# type any text (or more accurately, if there is any text
-# between the start of the line and the cursor),
-# the subset of the history starting with that text
-# is searched (like 4dos for e.g.).
-# Note to get rid of a line just Ctrl-C
-#
-"\e[B": history-search-forward
-"\e[A": history-search-backward
 
-$if Bash
-  #do history expansion when space entered
-  Space: magic-space
-$endif
+#$if Bash
+#  #do history expansion when space entered
+#  Space: magic-space
+#$endif
 
 # Include system wide settings which are ignored
 # by default if one has their own .inputrc
