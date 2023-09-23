@@ -1,4 +1,4 @@
-AwesomePrint.defaults = {
+AmazingPrint.defaults = {
   ruby19_syntax: true,
   indent: -2
 }
