@@ -1,5 +1,0 @@
-# http://jasoncoffin.com/2011/03/11/utilize-vi-keyboard-shortcuts-in-your-terminal/
-set -o vi
-
-# https://bluz71.github.io/2023/06/02/maximize-productivity-of-the-bash-shell.html
-shopt -s direxpand histappend histverify globstar nocaseglob no_empty_cmd_completion
