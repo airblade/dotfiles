@@ -236,6 +236,8 @@ export GIT_PS1_SHOWSTASHSTATE=1
 # (%) untracked files
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
+. /usr/local/etc/bash_completion.d/git-prompt.sh
+
 git_head='git rev-parse --short HEAD 2>/dev/null'
 
 function build_prompt {
