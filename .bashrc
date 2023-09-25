@@ -26,8 +26,6 @@ alias glb='git l HEAD ^main'
 
 # Bundler
 alias b='bundle'
-complete -F _bundler b
-
 alias bert='bundle exec rake test'
 
 # Rails
@@ -181,14 +179,8 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && . "${HOME}/.iterm2_shell_int
 # Completions
 #
 
-[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ] && . "$HOMEBREW_PREFIX/etc/bash_completion"
-
-# complete -C aws_completer aws
-
-# Git completion.
-source /usr/local/etc/bash_completion.d/git-completion.bash
-# Git completion for my `g` alias.
-# complete -o default -o nospace -F _git g
+# brew install bash-completion@2
+[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 
 SSH_COMPLETE=( $(grep 'Host ' ~/.ssh/config | cut -f2 -d' ') )
 complete -o default -W "${SSH_COMPLETE[*]}" ssh
@@ -262,5 +254,4 @@ PROMPT_COMMAND="build_prompt; history -a"
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
