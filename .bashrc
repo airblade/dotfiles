@@ -94,6 +94,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --color=never'
 # https://blog.phusion.nl/2017/10/13/why-ruby-app-servers-break-on-macos-high-sierra-and-what-can-be-done-about-it/
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+# Ensure we do not load macOS's /etc/irbrc because it is obsolete.
+export ETC_IRBRC_LOADED=true
+
 
 #
 # Functions

@@ -4,21 +4,22 @@ set editing-mode vi
 # and insert mode (unconfirmed)
 set keymap vi-insert
 
-# beam cursor in insert mode, block cursor in normal mode
-# https://stackoverflow.com/a/42107711/151007
-set show-mode-in-prompt on
+# # beam cursor in insert mode, block cursor in normal mode
+# # https://stackoverflow.com/a/42107711/151007
 set vi-ins-mode-string \1\e[6 q\2
 set vi-cmd-mode-string \1\e[2 q\2
 
 # https://bluz71.github.io/2023/06/02/maximize-productivity-of-the-bash-shell.html
 
-# TAB cycles forward and Shift-TAB cycles backward through completion choices.
+# # TAB cycles forward and Shift-TAB cycles backward through completion choices.
 TAB: menu-complete
 "\e[Z": menu-complete-backward
 
 # Substring history search using UP and DOWN arrow keys.
-"\e[A": history-substring-search-backward
-"\e[B": history-substring-search-forward
+# "\e[A": history-substring-search-backward
+# "\e[B": history-substring-search-forward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 
 # Alt-e to launch $EDITOR on the current command and execute when finished editing.
 "\ee": edit-and-execute-command
@@ -67,4 +68,4 @@ set skip-completed-text on
 
 # Include system wide settings which are ignored
 # by default if one has their own .inputrc
-$include /etc/inputrc
+# $include /etc/inputrc
