@@ -175,8 +175,6 @@ shopt -s cmdhist
 # https://github.com/iamvery/dotfiles/commit/822dd1ce632ec5e92801ba31a48357daffaa6a7b
 . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && . "${HOME}/.iterm2_shell_integration.bash"
-
 
 #
 # Completions
@@ -253,6 +251,9 @@ function build_prompt {
 }
 
 PROMPT_COMMAND="build_prompt; history -a"
+
+# iTerm2 shell integration: must come after PROMPT_COMMAND
+test -e "${HOME}/.iterm2_shell_integration.bash" && . "${HOME}/.iterm2_shell_integration.bash"
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
