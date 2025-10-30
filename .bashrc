@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-HOMEBREW_PREFIX=$(brew --prefix)
+# To add homebrew to your path (Apple Silicon)
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# To add homebrew to your path (Intel)
+eval "$(/usr/local/bin/brew shellenv)"
 
 #
 # Aliases
@@ -33,6 +36,10 @@ alias log='less +F log/development.log'
 alias r='bin/rails'
 alias t='bin/rails test'
 
+# Kamal
+alias k="kamal"
+# alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "/run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock" -e SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock" -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/basecamp/kamal:latest'
+
 # Directories
 alias lls='ls -l'
 alias lsdot='ls -lAd .*'
@@ -58,10 +65,9 @@ alias tree='tree -C -F'
 # Environment variables
 #
 
-export HISTCONTROL=ignoredups
-export HISTIGNORE="?:??"
 export HISTFILESIZE=99999
 export HISTSIZE=99999
+export HISTTIMEFORMAT="%F %T %z  "
 export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -147,6 +153,17 @@ function mm {
   mvim db/migrate/"$(ls -1 db/migrate/ | tail -1)"
 }
 
+# https://stackoverflow.com/a/30029855/151007
+function listening {
+  if [ $# -eq 0 ]; then
+      sudo lsof -iTCP -sTCP:LISTEN -n -P
+  elif [ $# -eq 1 ]; then
+      sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+  else
+      echo "Usage: listening [pattern]"
+  fi
+}
+
 
 #
 # Settings
@@ -169,10 +186,7 @@ shopt -s cmdhist
 #
 
 # chruby
-# slow? https://github.com/bluz71/dotfiles/blob/981f22a19c76a09c2f9e47f282a2347506bff8f9/bashrc#L280-L291
 . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
-# Source auto.sh after setting default ruby
-# https://github.com/iamvery/dotfiles/commit/822dd1ce632ec5e92801ba31a48357daffaa6a7b
 . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
 
 
@@ -255,7 +269,9 @@ PROMPT_COMMAND="build_prompt; history -a"
 # iTerm2 shell integration: must come after PROMPT_COMMAND
 test -e "${HOME}/.iterm2_shell_integration.bash" && . "${HOME}/.iterm2_shell_integration.bash"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# Node - used by Sparkle
+function spnode {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+}
+source /Users/andy/.config/op/plugins.sh
