@@ -69,6 +69,7 @@ export HISTFILESIZE=99999
 export HISTSIZE=99999
 export HISTTIMEFORMAT="%F %T %z  "
 export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
+export RAILS_EDITOR='mvim'
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
