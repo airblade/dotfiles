@@ -18,11 +18,6 @@
     # Undo your last commit, but don't throw away your changes
     undo = reset --soft HEAD^
     unstage = reset -q --
-    # fixup = commit --amend -C HEAD
-    # Use: git fixup          <-- to fixup into HEAD
-    #      git fixup <sha>    <-- to fixup into given <sha>
-    # https://arialdomartini.github.io/git-fixup
-    fixup = "!f() { TARGET=$(git rev-parse ${1:-HEAD}); git commit --fixup=$TARGET && GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash $TARGET^; }; f"
     ri = !sh -c 'git rebase -i HEAD~"$1"' -
     # Expand an abbreviated SHA to a full 40 character one.
     expand = rev-parse --verify
